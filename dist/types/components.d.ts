@@ -196,7 +196,7 @@ export namespace Components {
     */
     'width': "auto" | "half" | "full";
   }
-  interface CalciteButtonWithOverflow {
+  interface CalciteButtonWithDropdown {
     /**
     * specify the color of the control, defaults to blue
     */
@@ -209,13 +209,13 @@ export namespace Components {
     */
     'disabled'?: boolean;
     /**
+    * aria label for overflow button
+    */
+    'dropdownLabel': string;
+    /**
     * optionally add a calcite-loader component to the control, disabling interaction. with the primary button
     */
     'loading'?: boolean;
-    /**
-    * aria label for overflow button
-    */
-    'overflowLabel': string;
     /**
     * text for primary action button
     */
@@ -225,7 +225,7 @@ export namespace Components {
     */
     'scale': Scale;
     /**
-    * Select theme (light or dark)
+    * Select theme (light or dark), defaults to light
     */
     'theme': "light" | "dark";
   }
@@ -990,10 +990,10 @@ declare global {
     new (): HTMLCalciteButtonElement;
   };
 
-  interface HTMLCalciteButtonWithOverflowElement extends Components.CalciteButtonWithOverflow, HTMLStencilElement {}
-  var HTMLCalciteButtonWithOverflowElement: {
-    prototype: HTMLCalciteButtonWithOverflowElement;
-    new (): HTMLCalciteButtonWithOverflowElement;
+  interface HTMLCalciteButtonWithDropdownElement extends Components.CalciteButtonWithDropdown, HTMLStencilElement {}
+  var HTMLCalciteButtonWithDropdownElement: {
+    prototype: HTMLCalciteButtonWithDropdownElement;
+    new (): HTMLCalciteButtonWithDropdownElement;
   };
 
   interface HTMLCalciteCardElement extends Components.CalciteCard, HTMLStencilElement {}
@@ -1168,7 +1168,7 @@ declare global {
     'calcite-accordion-item': HTMLCalciteAccordionItemElement;
     'calcite-alert': HTMLCalciteAlertElement;
     'calcite-button': HTMLCalciteButtonElement;
-    'calcite-button-with-overflow': HTMLCalciteButtonWithOverflowElement;
+    'calcite-button-with-dropdown': HTMLCalciteButtonWithDropdownElement;
     'calcite-card': HTMLCalciteCardElement;
     'calcite-checkbox': HTMLCalciteCheckboxElement;
     'calcite-date-day': HTMLCalciteDateDayElement;
@@ -1367,7 +1367,7 @@ declare namespace LocalJSX {
     */
     'width'?: "auto" | "half" | "full";
   }
-  interface CalciteButtonWithOverflow {
+  interface CalciteButtonWithDropdown {
     /**
     * specify the color of the control, defaults to blue
     */
@@ -1380,6 +1380,10 @@ declare namespace LocalJSX {
     */
     'disabled'?: boolean;
     /**
+    * aria label for overflow button
+    */
+    'dropdownLabel'?: string;
+    /**
     * optionally add a calcite-loader component to the control, disabling interaction. with the primary button
     */
     'loading'?: boolean;
@@ -1387,10 +1391,6 @@ declare namespace LocalJSX {
     * Fired when the modal begins the open animation
     */
     'onPrimaryButtonClicked'?: (event: CustomEvent<any>) => void;
-    /**
-    * aria label for overflow button
-    */
-    'overflowLabel'?: string;
     /**
     * text for primary action button
     */
@@ -1400,7 +1400,7 @@ declare namespace LocalJSX {
     */
     'scale'?: Scale;
     /**
-    * Select theme (light or dark)
+    * Select theme (light or dark), defaults to light
     */
     'theme'?: "light" | "dark";
   }
@@ -2169,7 +2169,7 @@ declare namespace LocalJSX {
     'calcite-accordion-item': CalciteAccordionItem;
     'calcite-alert': CalciteAlert;
     'calcite-button': CalciteButton;
-    'calcite-button-with-overflow': CalciteButtonWithOverflow;
+    'calcite-button-with-dropdown': CalciteButtonWithDropdown;
     'calcite-card': CalciteCard;
     'calcite-checkbox': CalciteCheckbox;
     'calcite-date-day': CalciteDateDay;
@@ -2211,7 +2211,7 @@ declare module "@stencil/core" {
       'calcite-accordion-item': LocalJSX.CalciteAccordionItem & JSXBase.HTMLAttributes<HTMLCalciteAccordionItemElement>;
       'calcite-alert': LocalJSX.CalciteAlert & JSXBase.HTMLAttributes<HTMLCalciteAlertElement>;
       'calcite-button': LocalJSX.CalciteButton & JSXBase.HTMLAttributes<HTMLCalciteButtonElement>;
-      'calcite-button-with-overflow': LocalJSX.CalciteButtonWithOverflow & JSXBase.HTMLAttributes<HTMLCalciteButtonWithOverflowElement>;
+      'calcite-button-with-dropdown': LocalJSX.CalciteButtonWithDropdown & JSXBase.HTMLAttributes<HTMLCalciteButtonWithDropdownElement>;
       'calcite-card': LocalJSX.CalciteCard & JSXBase.HTMLAttributes<HTMLCalciteCardElement>;
       'calcite-checkbox': LocalJSX.CalciteCheckbox & JSXBase.HTMLAttributes<HTMLCalciteCheckboxElement>;
       'calcite-date-day': LocalJSX.CalciteDateDay & JSXBase.HTMLAttributes<HTMLCalciteDateDayElement>;
