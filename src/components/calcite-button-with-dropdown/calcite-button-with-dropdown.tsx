@@ -11,8 +11,8 @@ import { Scale } from "../../interfaces/common";
 import { getElementDir } from "../../utils/dom";
 
 @Component({
-  tag: "calcite-button-with-overflow",
-  styleUrl: "calcite-button-with-overflow.scss",
+  tag: "calcite-button-with-dropdown",
+  styleUrl: "calcite-button-with-dropdown.scss",
   shadow: true
 })
 
@@ -38,17 +38,17 @@ export class CalciteButtonWithOverflow {
     | "light"
     | "red" = "blue";
 
-  /** Select theme (light or dark) */
+  /** Select theme (light or dark), defaults to light */
   @Prop({ mutable: true, reflect: true }) theme: "light" | "dark" = "light";
 
   /** specify the scale of the control, defaults to m */
-  @Prop({ mutable: true, reflect: true }) scale: Scale = "xs";
+  @Prop({ mutable: true, reflect: true }) scale: Scale = "m";
 
   /** text for primary action button  */
   @Prop({ reflect: true }) primaryText: string;
 
   /** aria label for overflow button */
-  @Prop({ reflect: true }) overflowLabel: string;
+  @Prop({ reflect: true }) dropdownLabel: string;
 
   /** optionally add a calcite-loader component to the control,
     disabling interaction. with the primary button */
@@ -78,7 +78,7 @@ export class CalciteButtonWithOverflow {
     if (!color.includes(this.color)) this.color = "blue";
 
     let scale = ["xs", "s", "m", "l", "xl"];
-    if (!scale.includes(this.scale)) this.scale = "xs";
+    if (!scale.includes(this.scale)) this.scale = "m";
 
     let theme = ["dark", "light"];
     if (!theme.includes(this.theme)) this.theme = "light";
@@ -102,20 +102,20 @@ export class CalciteButtonWithOverflow {
             <div class='divider'/>
           </div>
           <calcite-dropdown
-              alignment={this.dropdownAlignment}
+              dir={dir}
               theme={this.theme}
               scale={this.dropdownScale}
               width={this.dropdownScale}>
-              <calcite-button
-                  aria-label={this.overflowLabel}
-                  slot="dropdown-trigger"
-                  scale={this.scale}
-                  color={this.color}
-                  disabled={this.disabled}
-                  theme={this.theme}
-                  icon='caretDown'
-                  textless-height='full'>
-              </calcite-button>
+            <calcite-button
+                aria-label={this.dropdownLabel}
+                slot="dropdown-trigger"
+                scale={this.scale}
+                color={this.color}
+                disabled={this.disabled}
+                theme={this.theme}
+                icon='caretDown'
+                textless-height='full'>
+            </calcite-button>
             <slot />
           </calcite-dropdown>
         </div>
@@ -130,11 +130,6 @@ export class CalciteButtonWithOverflow {
   //--------------------------------------------------------------------------
 
   private primaryButtonClickedHandler = (e: MouseEvent) => this.primaryButtonClicked.emit(e)
-
-  private get dropdownAlignment() {
-    const dir = getElementDir(this.el);
-    return dir === "rtl" ? "right" : "left"
-  }
 
   private get dropdownScale() {
     const scaleLookup: { [id in Scale] : "s" | "m" | "l" } = {
