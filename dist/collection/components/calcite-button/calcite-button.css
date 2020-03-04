@@ -1184,108 +1184,130 @@ a {
   background-position: 100% 100%, 100% 100%;
 }
 
-:host([hastext][scale=xs]:not([appearance=inline])) button,
-:host([hastext][scale=xs]:not([appearance=inline])) a {
+:host([use-text-proportions][scale=xs]:not([appearance=inline])) a,
+:host([use-text-proportions][scale=xs]:not([appearance=inline])) button,
+:host([hastext][scale=xs]:not([appearance=inline])) a,
+:host([hastext][scale=xs]:not([appearance=inline])) button {
   padding: calc(1.5rem/ 6) calc(1.5rem* 0.3);
   font-size: 0.8125rem;
   line-height: 1.5;
 }
 
-:host([hastext][scale=s]:not([appearance=inline])) button,
-:host([hastext][scale=s]:not([appearance=inline])) a {
+:host([use-text-proportions][scale=s]:not([appearance=inline])) a,
+:host([use-text-proportions][scale=s]:not([appearance=inline])) button,
+:host([hastext][scale=s]:not([appearance=inline])) a,
+:host([hastext][scale=s]:not([appearance=inline])) button {
   padding: calc(1.5rem/ 4) calc(1.5rem* 0.5);
   font-size: 0.875rem;
   line-height: 1.5;
 }
 
-:host([hastext][scale=m]:not([appearance=inline])) button,
-:host([hastext][scale=m]:not([appearance=inline])) a {
+:host([use-text-proportions][scale=m]:not([appearance=inline])) a,
+:host([use-text-proportions][scale=m]:not([appearance=inline])) button,
+:host([hastext][scale=m]:not([appearance=inline])) a,
+:host([hastext][scale=m]:not([appearance=inline])) button {
   padding: calc(1.5rem/ 3) calc(1.5rem* 0.75);
   font-size: 0.9375rem;
   line-height: 1.5;
 }
 
-:host([hastext][scale=l]:not([appearance=inline])) button,
-:host([hastext][scale=l]:not([appearance=inline])) a {
+:host([use-text-proportions][scale=l]:not([appearance=inline])) a,
+:host([use-text-proportions][scale=l]:not([appearance=inline])) button,
+:host([hastext][scale=l]:not([appearance=inline])) a,
+:host([hastext][scale=l]:not([appearance=inline])) button {
   padding: calc(1.5rem / 2) calc(1.5rem* 1);
   font-size: 1.2019rem;
   line-height: 1.5;
 }
 @media screen and (max-width: 859px) {
-  :host([hastext][scale=l]:not([appearance=inline])) button,
-:host([hastext][scale=l]:not([appearance=inline])) a {
+  :host([use-text-proportions][scale=l]:not([appearance=inline])) a,
+:host([use-text-proportions][scale=l]:not([appearance=inline])) button,
+:host([hastext][scale=l]:not([appearance=inline])) a,
+:host([hastext][scale=l]:not([appearance=inline])) button {
     font-size: 1.1305rem;
   }
 }
 @media screen and (max-width: 479px) {
-  :host([hastext][scale=l]:not([appearance=inline])) button,
-:host([hastext][scale=l]:not([appearance=inline])) a {
+  :host([use-text-proportions][scale=l]:not([appearance=inline])) a,
+:host([use-text-proportions][scale=l]:not([appearance=inline])) button,
+:host([hastext][scale=l]:not([appearance=inline])) a,
+:host([hastext][scale=l]:not([appearance=inline])) button {
     font-size: 1.0625rem;
   }
 }
 
-:host([hastext][scale=xl]:not([appearance=inline])) button,
-:host([hastext][scale=xl]:not([appearance=inline])) a {
+:host([use-text-proportions][scale=xl]:not([appearance=inline])) a,
+:host([use-text-proportions][scale=xl]:not([appearance=inline])) button,
+:host([hastext][scale=xl]:not([appearance=inline])) a,
+:host([hastext][scale=xl]:not([appearance=inline])) button {
   padding: calc(1.5rem / 1.5) calc(1.5rem* 1.25);
   font-size: 1.414rem;
   line-height: 1.5;
 }
 @media screen and (max-width: 859px) {
-  :host([hastext][scale=xl]:not([appearance=inline])) button,
-:host([hastext][scale=xl]:not([appearance=inline])) a {
+  :host([use-text-proportions][scale=xl]:not([appearance=inline])) a,
+:host([use-text-proportions][scale=xl]:not([appearance=inline])) button,
+:host([hastext][scale=xl]:not([appearance=inline])) a,
+:host([hastext][scale=xl]:not([appearance=inline])) button {
     font-size: 1.33rem;
   }
 }
 @media screen and (max-width: 479px) {
-  :host([hastext][scale=xl]:not([appearance=inline])) button,
-:host([hastext][scale=xl]:not([appearance=inline])) a {
+  :host([use-text-proportions][scale=xl]:not([appearance=inline])) a,
+:host([use-text-proportions][scale=xl]:not([appearance=inline])) button,
+:host([hastext][scale=xl]:not([appearance=inline])) a,
+:host([hastext][scale=xl]:not([appearance=inline])) button {
     font-size: 1.25rem;
   }
 }
 
-:host([scale=xs]:not([hastext])) a, :host([scale=xs]:not([hastext])) button {
+:host([scale=xs]:not([hastext]):not([use-text-proportions])) a,
+:host([scale=xs]:not([hastext]):not([use-text-proportions])) button {
   height: calc(1.5rem* 1.5);
   width: calc(1.5rem* 1.5);
   padding: 0.1875rem;
   font-size: 0.8125rem;
   line-height: 1.5;
 }
-:host([scale=xs]:not([hastext])):host([textless-height=full]) {
+:host([scale=xs]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) {
   height: 100%;
 }
-:host([scale=xs]:not([hastext])):host([textless-height=full]) button {
+:host([scale=xs]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) button {
   height: 100%;
 }
 
-:host([scale=s]:not([hastext])) a, :host([scale=s]:not([hastext])) button {
+:host([scale=s]:not([hastext]):not([use-text-proportions])) a,
+:host([scale=s]:not([hastext]):not([use-text-proportions])) button {
   height: calc(1.5rem* 1.75);
   width: calc(1.5rem* 1.75);
   padding: 0.1875rem;
   font-size: 0.875rem;
   line-height: 1.5;
 }
-:host([scale=s]:not([hastext])):host([textless-height=full]) {
+:host([scale=s]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) {
   height: 100%;
 }
-:host([scale=s]:not([hastext])):host([textless-height=full]) button {
+:host([scale=s]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) button {
   height: 100%;
 }
 
-:host([scale=m]:not([hastext])) a, :host([scale=m]:not([hastext])) button {
+:host([scale=m]:not([hastext]):not([use-text-proportions])) a,
+:host([scale=m]:not([hastext]):not([use-text-proportions])) button {
   height: calc(1.5rem* 2);
   width: calc(1.5rem* 2);
   padding: 0.1875rem;
   font-size: 0.9375rem;
   line-height: 1.5;
 }
-:host([scale=m]:not([hastext])):host([textless-height=full]) {
+:host([scale=m]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) {
   height: 100%;
 }
-:host([scale=m]:not([hastext])):host([textless-height=full]) button {
+:host([scale=m]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) button {
   height: 100%;
 }
 
-:host([scale=l]:not([hastext])) a, :host([scale=l]:not([hastext])) button {
+:host([scale=l]:not([hastext]):not([use-text-proportions])) a,
+:host([scale=l]:not([hastext]):not([use-text-proportions])) button {
   height: calc(1.5rem * 2.25);
   width: calc(1.5rem * 2.25);
   padding: 0.1875rem;
@@ -1293,23 +1315,26 @@ a {
   line-height: 1.5;
 }
 @media screen and (max-width: 859px) {
-  :host([scale=l]:not([hastext])) a, :host([scale=l]:not([hastext])) button {
+  :host([scale=l]:not([hastext]):not([use-text-proportions])) a,
+:host([scale=l]:not([hastext]):not([use-text-proportions])) button {
     font-size: 1.1305rem;
   }
 }
 @media screen and (max-width: 479px) {
-  :host([scale=l]:not([hastext])) a, :host([scale=l]:not([hastext])) button {
+  :host([scale=l]:not([hastext]):not([use-text-proportions])) a,
+:host([scale=l]:not([hastext]):not([use-text-proportions])) button {
     font-size: 1.0625rem;
   }
 }
-:host([scale=l]:not([hastext])):host([textless-height=full]) {
+:host([scale=l]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) {
   height: 100%;
 }
-:host([scale=l]:not([hastext])):host([textless-height=full]) button {
+:host([scale=l]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) button {
   height: 100%;
 }
 
-:host([scale=xl]:not([hastext])) a, :host([scale=xl]:not([hastext])) button {
+:host([scale=xl]:not([hastext]):not([use-text-proportions])) a,
+:host([scale=xl]:not([hastext]):not([use-text-proportions])) button {
   height: calc(1.5rem * 2.5);
   width: calc(1.5rem * 2.5);
   padding: 0.1875rem;
@@ -1317,18 +1342,20 @@ a {
   line-height: 1.5;
 }
 @media screen and (max-width: 859px) {
-  :host([scale=xl]:not([hastext])) a, :host([scale=xl]:not([hastext])) button {
+  :host([scale=xl]:not([hastext]):not([use-text-proportions])) a,
+:host([scale=xl]:not([hastext]):not([use-text-proportions])) button {
     font-size: 1.33rem;
   }
 }
 @media screen and (max-width: 479px) {
-  :host([scale=xl]:not([hastext])) a, :host([scale=xl]:not([hastext])) button {
+  :host([scale=xl]:not([hastext]):not([use-text-proportions])) a,
+:host([scale=xl]:not([hastext]):not([use-text-proportions])) button {
     font-size: 1.25rem;
   }
 }
-:host([scale=xl]:not([hastext])):host([textless-height=full]) {
+:host([scale=xl]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) {
   height: 100%;
 }
-:host([scale=xl]:not([hastext])):host([textless-height=full]) button {
+:host([scale=xl]:not([hastext]):not([use-text-proportions])):host([textless-height=full]) button {
   height: 100%;
 }

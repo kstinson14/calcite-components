@@ -22,8 +22,8 @@ export class CalciteButton {
         this.scale = "m";
         /** specify the width of the button, defaults to auto */
         this.width = "auto";
-        /** specify the height of the button if no text is present, defaults to auto */
-        this.textlessHeight = "auto";
+        /** optionally make button have proportions of a button with text, even if it has no text content */
+        this.useTextProportions = false;
         /** optionally add a calcite-loader component to the button, disabling interaction.  */
         this.loading = false;
         /** optionally add a round style to the button  */
@@ -94,11 +94,7 @@ export class CalciteButton {
         let iconPosition = ["start", "end"];
         if (this.icon !== null && !iconPosition.includes(this.iconPosition))
             this.iconPosition = "start";
-        this.childElType = this.href
-            ? "a"
-            : this.appearance === "inline"
-                ? "span"
-                : "button";
+        this.childElType = this.href ? "a" : this.appearance === "inline" ? "span" : "button";
     }
     componentWillLoad() {
         if (Build.isBrowser) {
@@ -123,9 +119,9 @@ export class CalciteButton {
             : this.scale === "l"
                 ? "m"
                 : "l";
-        const iconEl = (h("calcite-icon", { class: "calcite-button--icon", icon: this.icon, scale: iconScale }));
+        const iconEl = h("calcite-icon", { class: "calcite-button--icon", icon: this.icon, scale: iconScale });
         return (h(Host, { dir: dir, hasText: this.hasText },
-            h(Tag, Object.assign({}, attributes, { role: role, tabindex: tabIndex, onClick: e => this.handleClick(e), disabled: this.disabled, ref: el => (this.childEl = el) }),
+            h(Tag, Object.assign({}, attributes, { role: role, tabindex: tabIndex, onClick: (e) => this.handleClick(e), disabled: this.disabled, ref: (el) => (this.childEl = el) }),
                 this.loading ? loader : null,
                 this.icon && this.iconPosition === "start" ? iconEl : null,
                 h("slot", null),
@@ -153,10 +149,11 @@ export class CalciteButton {
             "scale",
             "width",
             "textlessHeight",
+            "useTextProportions",
             "theme"
         ];
         return Array.from(this.el.attributes)
-            .filter(a => a && !props.includes(a.name))
+            .filter((a) => a && !props.includes(a.name))
             .reduce((acc, { name, value }) => (Object.assign(Object.assign({}, acc), { [name]: value })), {});
     }
     static get is() { return "calcite-button"; }
@@ -172,7 +169,7 @@ export class CalciteButton {
             "type": "string",
             "mutable": true,
             "complexType": {
-                "original": "| \"blue\"\n    | \"dark\"\n    | \"light\"\n    | \"red\"",
+                "original": "\"blue\" | \"dark\" | \"light\" | \"red\"",
                 "resolved": "\"blue\" | \"dark\" | \"light\" | \"red\"",
                 "references": {}
             },
@@ -258,23 +255,23 @@ export class CalciteButton {
             "reflect": true,
             "defaultValue": "\"auto\""
         },
-        "textlessHeight": {
-            "type": "string",
+        "useTextProportions": {
+            "type": "boolean",
             "mutable": true,
             "complexType": {
-                "original": "\"auto\" | \"full\"",
-                "resolved": "\"auto\" | \"full\"",
+                "original": "boolean",
+                "resolved": "boolean",
                 "references": {}
             },
             "required": false,
-            "optional": false,
+            "optional": true,
             "docs": {
                 "tags": [],
-                "text": "specify the height of the button if no text is present, defaults to auto"
+                "text": "optionally make button have proportions of a button with text, even if it has no text content"
             },
-            "attribute": "textless-height",
+            "attribute": "use-text-proportions",
             "reflect": true,
-            "defaultValue": "\"auto\""
+            "defaultValue": "false"
         },
         "loading": {
             "type": "boolean",

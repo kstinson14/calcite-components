@@ -93,6 +93,9 @@ a {
 :host > div {
   display: flex;
 }
+:host calcite-dropdown > calcite-button {
+  height: 100%;
+}
 
 :host([color=blue]) .divider-container {
   background-color: var(--calcite-ui-blue);

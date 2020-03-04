@@ -146,10 +146,7 @@ export namespace Components {
     /**
     * specify the color of the button, defaults to blue
     */
-    'color': | "blue"
-    | "dark"
-    | "light"
-    | "red";
+    'color': "blue" | "dark" | "light" | "red";
     /**
     * is the button disabled
     */
@@ -184,13 +181,13 @@ export namespace Components {
     'scale': "xs" | "s" | "m" | "l" | "xl";
     'setFocus': () => Promise<void>;
     /**
-    * specify the height of the button if no text is present, defaults to auto
-    */
-    'textlessHeight': "auto" | "full";
-    /**
     * Select theme (light or dark)
     */
     'theme': "light" | "dark";
+    /**
+    * optionally make button have proportions of a button with text, even if it has no text content
+    */
+    'useTextProportions'?: boolean;
     /**
     * specify the width of the button, defaults to auto
     */
@@ -200,10 +197,7 @@ export namespace Components {
     /**
     * specify the color of the control, defaults to blue
     */
-    'color': "blue"
-    | "dark"
-    | "light"
-    | "red";
+    'color': "blue" | "dark" | "light" | "red";
     /**
     * is the control disabled
     */
@@ -217,6 +211,10 @@ export namespace Components {
     */
     'loading'?: boolean;
     /**
+    * optionally pass an icon to display on the primary button - accepts Calcite UI icon names
+    */
+    'primaryIcon'?: string;
+    /**
     * text for primary action button
     */
     'primaryText': string;
@@ -225,7 +223,7 @@ export namespace Components {
     */
     'scale': Scale;
     /**
-    * Select theme (light or dark), defaults to light
+    * select theme (light or dark), defaults to light
     */
     'theme': "light" | "dark";
   }
@@ -1318,10 +1316,7 @@ declare namespace LocalJSX {
     /**
     * specify the color of the button, defaults to blue
     */
-    'color'?: | "blue"
-    | "dark"
-    | "light"
-    | "red";
+    'color'?: "blue" | "dark" | "light" | "red";
     /**
     * is the button disabled
     */
@@ -1355,13 +1350,13 @@ declare namespace LocalJSX {
     */
     'scale'?: "xs" | "s" | "m" | "l" | "xl";
     /**
-    * specify the height of the button if no text is present, defaults to auto
-    */
-    'textlessHeight'?: "auto" | "full";
-    /**
     * Select theme (light or dark)
     */
     'theme'?: "light" | "dark";
+    /**
+    * optionally make button have proportions of a button with text, even if it has no text content
+    */
+    'useTextProportions'?: boolean;
     /**
     * specify the width of the button, defaults to auto
     */
@@ -1371,10 +1366,7 @@ declare namespace LocalJSX {
     /**
     * specify the color of the control, defaults to blue
     */
-    'color'?: "blue"
-    | "dark"
-    | "light"
-    | "red";
+    'color'?: "blue" | "dark" | "light" | "red";
     /**
     * is the control disabled
     */
@@ -1388,9 +1380,13 @@ declare namespace LocalJSX {
     */
     'loading'?: boolean;
     /**
-    * Fired when the modal begins the open animation
+    * fired when the modal begins the open animation
     */
     'onPrimaryButtonClicked'?: (event: CustomEvent<any>) => void;
+    /**
+    * optionally pass an icon to display on the primary button - accepts Calcite UI icon names
+    */
+    'primaryIcon'?: string;
     /**
     * text for primary action button
     */
@@ -1400,7 +1396,7 @@ declare namespace LocalJSX {
     */
     'scale'?: Scale;
     /**
-    * Select theme (light or dark), defaults to light
+    * select theme (light or dark), defaults to light
     */
     'theme'?: "light" | "dark";
   }
