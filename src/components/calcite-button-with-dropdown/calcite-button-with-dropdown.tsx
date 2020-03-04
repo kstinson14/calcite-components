@@ -1,12 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop
-} from "@stencil/core";
+import { Component, Element, Event, EventEmitter, h, Host, Prop, Watch } from "@stencil/core";
 import { Scale } from "../../interfaces/common";
 import { getElementDir } from "../../utils/dom";
 
@@ -15,30 +7,13 @@ import { getElementDir } from "../../utils/dom";
   styleUrl: "calcite-button-with-dropdown.scss",
   shadow: true
 })
-
 export class CalciteButtonWithOverflow {
-  //--------------------------------------------------------------------------
-  //
-  //  Element
-  //
-  //--------------------------------------------------------------------------
-
   @Element() el: HTMLElement;
 
-  //--------------------------------------------------------------------------
-  //
-  //  Properties
-  //
-  //--------------------------------------------------------------------------
-
   /** specify the color of the control, defaults to blue */
-  @Prop({ mutable: true, reflect: true }) color:
-    "blue"
-    | "dark"
-    | "light"
-    | "red" = "blue";
+  @Prop({ mutable: true, reflect: true }) color: "blue" | "dark" | "light" | "red" = "blue";
 
-  /** Select theme (light or dark), defaults to light */
+  /** select theme (light or dark), defaults to light */
   @Prop({ mutable: true, reflect: true }) theme: "light" | "dark" = "light";
 
   /** specify the scale of the control, defaults to m */
@@ -46,6 +21,9 @@ export class CalciteButtonWithOverflow {
 
   /** text for primary action button  */
   @Prop({ reflect: true }) primaryText: string;
+
+  /** optionally pass an icon to display on the primary button - accepts Calcite UI icon names  */
+  @Prop({ reflect: true }) primaryIcon?: string;
 
   /** aria label for overflow button */
   @Prop({ reflect: true }) dropdownLabel: string;
@@ -57,31 +35,31 @@ export class CalciteButtonWithOverflow {
   /** is the control disabled  */
   @Prop({ reflect: true }) disabled?: boolean;
 
-  //--------------------------------------------------------------------------
-  //
-  //  Events
-  //
-  //--------------------------------------------------------------------------
-
-  /** Fired when the modal begins the open animation */
+  /** fired when the modal begins the open animation */
   @Event() primaryButtonClicked: EventEmitter;
 
-  //--------------------------------------------------------------------------
-  //
-  //  Lifecycle
-  //
-  //--------------------------------------------------------------------------
-
-  connectedCallback() {
-    // prop validations
+  @Watch("color")
+  validateColor() {
     let color = ["blue", "red", "dark", "light"];
     if (!color.includes(this.color)) this.color = "blue";
+  }
 
+  @Watch("scale")
+  validateScale() {
     let scale = ["xs", "s", "m", "l", "xl"];
     if (!scale.includes(this.scale)) this.scale = "m";
+  }
 
+  @Watch("theme")
+  validateTheme() {
     let theme = ["dark", "light"];
     if (!theme.includes(this.theme)) this.theme = "light";
+  }
+
+  connectedCallback() {
+    this.validateColor();
+    this.validateScale();
+    this.validateTheme();
   }
 
   render() {
@@ -90,32 +68,37 @@ export class CalciteButtonWithOverflow {
       <Host dir={dir}>
         <div>
           <calcite-button
-              color={this.color}
-              scale={this.scale}
-              loading={this.loading}
-              disabled={this.disabled}
-              theme={this.theme}
-              onClick={this.primaryButtonClickedHandler}>
+            color={this.color}
+            scale={this.scale}
+            loading={this.loading}
+            icon={this.primaryIcon}
+            iconPosition={dir === "ltr" ? "start" : "end"}
+            disabled={this.disabled}
+            theme={this.theme}
+            onClick={this.primaryButtonClickedHandler}
+          >
             {this.primaryText}
           </calcite-button>
-          <div class='divider-container'>
-            <div class='divider'/>
+          <div class="divider-container">
+            <div class="divider" />
           </div>
           <calcite-dropdown
-              dir={dir}
-              theme={this.theme}
-              scale={this.dropdownScale}
-              width={this.dropdownScale}>
+            alignment="right"
+            dir={dir}
+            theme={this.theme}
+            scale={this.dropdownScale}
+            width={this.dropdownScale}
+          >
             <calcite-button
-                aria-label={this.dropdownLabel}
-                slot="dropdown-trigger"
-                scale={this.scale}
-                color={this.color}
-                disabled={this.disabled}
-                theme={this.theme}
-                icon='caretDown'
-                textless-height='full'>
-            </calcite-button>
+              aria-label={this.dropdownLabel}
+              slot="dropdown-trigger"
+              scale={this.scale}
+              color={this.color}
+              disabled={this.disabled}
+              theme={this.theme}
+              icon="caretDown"
+              use-text-proportions={this.primaryText}
+            ></calcite-button>
             <slot />
           </calcite-dropdown>
         </div>
@@ -123,23 +106,16 @@ export class CalciteButtonWithOverflow {
     );
   }
 
-  //--------------------------------------------------------------------------
-  //
-  //  Private State/Props
-  //
-  //--------------------------------------------------------------------------
-
-  private primaryButtonClickedHandler = (e: MouseEvent) => this.primaryButtonClicked.emit(e)
+  private primaryButtonClickedHandler = (e: MouseEvent) => this.primaryButtonClicked.emit(e);
 
   private get dropdownScale() {
-    const scaleLookup: { [id in Scale] : "s" | "m" | "l" } = {
-      'xs': 's',
-      's': 's',
-      'm': 'm',
-      'l': 'l',
-      'xl': 'l',
-    }
-    return scaleLookup[this.scale]
+    const scaleLookup: { [id in Scale]: "s" | "m" | "l" } = {
+      xs: "s",
+      s: "s",
+      m: "m",
+      l: "l",
+      xl: "l"
+    };
+    return scaleLookup[this.scale];
   }
-
 }
