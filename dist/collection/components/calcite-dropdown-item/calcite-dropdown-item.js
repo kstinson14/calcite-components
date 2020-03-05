@@ -31,14 +31,17 @@ export class CalciteDropdownItem {
         });
     }
     render() {
+        const attributes = this.getAttributes();
         const dir = getElementDir(this.el);
         const scale = getElementProp(this.el, "scale", "m");
         const iconScale = scale === "s" || scale === "m" ? "s" : "m";
         const iconStartEl = (h("calcite-icon", { class: "dropdown-item-icon-start", icon: this.iconStart, scale: iconScale }));
         const iconEndEl = (h("calcite-icon", { class: "dropdown-item-icon-end", icon: this.iconEnd, scale: iconScale }));
         const slottedContent = this.iconStart && this.iconEnd ? ([iconStartEl, h("slot", null), iconEndEl]) : this.iconStart ? ([iconStartEl, h("slot", null)]) : this.iconEnd ? ([h("slot", null), iconEndEl]) : (h("slot", null));
-        const contentEl = !this.href ? (slottedContent) : (h("a", { href: this.href, title: this.linkTitle }, slottedContent));
-        return (h(Host, { dir: dir, tabindex: "0", role: "menuitem", "aria-selected": this.active.toString(), isLink: this.href }, contentEl));
+        const contentEl = !this.href ? (slottedContent) : (h("a", Object.assign({}, attributes), slottedContent));
+        return (h(Host, { dir: dir, tabindex: "0", role: "menuitem", "selection-mode": this.selectionMode, "aria-selected": this.active.toString(), isLink: this.href },
+            this.selectionMode === "multi" ? (h("calcite-icon", { class: "dropdown-item-check-icon", scale: "s", icon: "check" })) : null,
+            contentEl));
     }
     //--------------------------------------------------------------------------
     //
@@ -109,6 +112,22 @@ export class CalciteDropdownItem {
         });
         this.closeCalciteDropdown.emit();
     }
+    getAttributes() {
+        // spread attributes from the component to rendered child, filtering out props
+        let props = [
+            "icon-start",
+            "icon-end",
+            "active",
+            "hasText",
+            "isLink",
+            "dir",
+            "id",
+            "theme"
+        ];
+        return Array.from(this.el.attributes)
+            .filter(a => a && !props.includes(a.name))
+            .reduce((acc, { name, value }) => (Object.assign(Object.assign({}, acc), { [name]: value })), {});
+    }
     getItemPosition() {
         const group = this.el.closest("calcite-dropdown-group");
         return Array.prototype.indexOf.call(group.querySelectorAll("calcite-dropdown-item"), this.el);
@@ -139,40 +158,6 @@ export class CalciteDropdownItem {
             "attribute": "active",
             "reflect": true,
             "defaultValue": "false"
-        },
-        "href": {
-            "type": "string",
-            "mutable": false,
-            "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-            },
-            "required": false,
-            "optional": true,
-            "docs": {
-                "tags": [],
-                "text": "pass an optional href to render an anchor around the link items"
-            },
-            "attribute": "href",
-            "reflect": false
-        },
-        "linkTitle": {
-            "type": "string",
-            "mutable": false,
-            "complexType": {
-                "original": "string",
-                "resolved": "string",
-                "references": {}
-            },
-            "required": false,
-            "optional": true,
-            "docs": {
-                "tags": [],
-                "text": "pass an optional title for rendered href"
-            },
-            "attribute": "link-title",
-            "reflect": false
         },
         "iconStart": {
             "type": "string",
@@ -206,6 +191,23 @@ export class CalciteDropdownItem {
                 "text": "optionally pass an icon to display at the end of an item - accepts calcite ui icon names"
             },
             "attribute": "icon-end",
+            "reflect": true
+        },
+        "href": {
+            "type": "string",
+            "mutable": false,
+            "complexType": {
+                "original": "string",
+                "resolved": "string",
+                "references": {}
+            },
+            "required": false,
+            "optional": true,
+            "docs": {
+                "tags": [],
+                "text": "optionally pass a href - used to determine if the component should render as anchor"
+            },
+            "attribute": "href",
             "reflect": true
         }
     }; }

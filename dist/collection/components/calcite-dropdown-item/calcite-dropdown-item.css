@@ -108,46 +108,8 @@ a {
   transition: 150ms ease-in-out;
 }
 
-:host(:hover),
-:host(:focus),
-:host(:active) {
-  background-color: var(--calcite-ui-foreground-hover);
-  color: var(--calcite-ui-text-1);
-  text-decoration: none;
-}
-
-:host(:active) {
-  background-color: var(--calcite-ui-foreground-press);
-}
-
-:host(:hover):before,
-:host(:active):before,
-:host(:focus):before {
-  opacity: 1;
-}
-
-:host([dir=rtl]):before {
-  left: unset;
-  right: 1rem;
-}
-
-:host([active]) {
-  color: var(--calcite-ui-text-1);
-  font-weight: 500;
-}
-:host([active]):before {
-  opacity: 1;
-  color: var(--calcite-ui-blue);
-}
-:host([active]) calcite-icon {
-  color: var(--calcite-ui-blue);
-}
-
 :host([islink]) {
   padding: 0;
-}
-:host([islink]):before {
-  display: none;
 }
 :host([islink]) a {
   display: flex;
@@ -172,37 +134,77 @@ a {
   transition: 150ms ease-in-out;
 }
 
-:host([islink]) a:hover,
-:host([islink]) a:focus,
-:host([islink]) a:active {
+:host(:hover),
+:host(:focus),
+:host(:active) {
   background-color: var(--calcite-ui-foreground-hover);
+  color: var(--calcite-ui-text-1);
   text-decoration: none;
 }
-:host([islink]) a:hover:before,
-:host([islink]) a:focus:before,
-:host([islink]) a:active:before {
-  opacity: 1;
-}
 
-:host([islink]) a:active {
+:host(:active) {
   background-color: var(--calcite-ui-foreground-press);
 }
 
-:host([islink][active]) a {
+:host(:hover):before,
+:host(:active):before,
+:host(:focus):before {
+  opacity: 1;
+}
+
+:host([dir=rtl]):before {
+  left: unset;
+  right: 1rem;
+}
+
+:host([active]:not([selection-mode=none])) {
   color: var(--calcite-ui-text-1);
   font-weight: 500;
 }
-:host([islink][active]) a:before {
+:host([active]:not([selection-mode=none])):before {
   opacity: 1;
   color: var(--calcite-ui-blue);
 }
-
-:host([islink][dir=rtl]) a {
-  padding: var(--calcite-dropdown-item-padding);
+:host([active]:not([selection-mode=none])) calcite-icon {
+  color: var(--calcite-ui-blue);
 }
-:host([islink][dir=rtl]) a:before {
+
+:host([selection-mode=multi]):before,
+:host([selection-mode=none]):before {
+  display: none;
+}
+
+:host([selection-mode=none]:not([islink])),
+:host([selection-mode=none][isLink]) a {
+  padding-left: 1rem;
+}
+
+:host([dir=rtl][selection-mode=none]:not([islink])),
+:host([dir=rtl][selection-mode=none][isLink]) a {
+  padding-right: 1rem;
+}
+
+:host .dropdown-item-check-icon {
+  position: absolute;
+  left: 0.8571428571rem;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: 150ms ease-in-out;
+}
+
+:host([dir=rtl]) .dropdown-item-check-icon {
   left: unset;
-  right: 1rem;
+  right: 0.8571428571rem;
+}
+
+:host(:hover) .dropdown-item-check-icon {
+  color: var(--calcite-ui-text-1);
+  opacity: 1;
+}
+
+:host([active]) .dropdown-item-check-icon {
+  color: var(--calcite-ui-blue);
+  opacity: 1;
 }
 
 :host .dropdown-item-icon-start {

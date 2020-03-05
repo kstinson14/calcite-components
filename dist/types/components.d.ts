@@ -412,9 +412,9 @@ export namespace Components {
     /**
     * specify the alignment of dropdrown, defaults to left
     */
-    'alignment': | "left"
-    | "right"
-    | "center";
+    'alignment': | "start"
+    | "center"
+    | "end";
     /**
     * specify the scale of dropdrown, defaults to m
     */
@@ -447,7 +447,7 @@ export namespace Components {
   interface CalciteDropdownItem {
     'active': boolean;
     /**
-    * pass an optional href to render an anchor around the link items
+    * optionally pass a href - used to determine if the component should render as anchor
     */
     'href'?: string;
     /**
@@ -458,10 +458,6 @@ export namespace Components {
     * optionally pass an icon to display at the start of an item - accepts calcite ui icon names
     */
     'iconStart'?: string;
-    /**
-    * pass an optional title for rendered href
-    */
-    'linkTitle'?: string;
   }
   interface CalciteExample {
     /**
@@ -1617,9 +1613,9 @@ declare namespace LocalJSX {
     /**
     * specify the alignment of dropdrown, defaults to left
     */
-    'alignment'?: | "left"
-    | "right"
-    | "center";
+    'alignment'?: | "start"
+    | "center"
+    | "end";
     /**
     * specify the scale of dropdrown, defaults to m
     */
@@ -1654,7 +1650,7 @@ declare namespace LocalJSX {
   interface CalciteDropdownItem {
     'active'?: boolean;
     /**
-    * pass an optional href to render an anchor around the link items
+    * optionally pass a href - used to determine if the component should render as anchor
     */
     'href'?: string;
     /**
@@ -1665,10 +1661,6 @@ declare namespace LocalJSX {
     * optionally pass an icon to display at the start of an item - accepts calcite ui icon names
     */
     'iconStart'?: string;
-    /**
-    * pass an optional title for rendered href
-    */
-    'linkTitle'?: string;
     'onCalciteDropdownItemKeyEvent'?: (event: CustomEvent<any>) => void;
     'onCalciteDropdownItemMouseover'?: (event: CustomEvent<any>) => void;
     'onCalciteDropdownItemSelected'?: (event: CustomEvent<any>) => void;

@@ -2,14 +2,12 @@ import { EventEmitter } from "../../stencil.core";
 export declare class CalciteDropdownItem {
     el: HTMLElement;
     active: boolean;
-    /** pass an optional href to render an anchor around the link items */
-    href?: string;
-    /** pass an optional title for rendered href */
-    linkTitle?: string;
     /** optionally pass an icon to display at the start of an item - accepts calcite ui icon names  */
     iconStart?: string;
     /** optionally pass an icon to display at the end of an item - accepts calcite ui icon names  */
     iconEnd?: string;
+    /** optionally pass a href - used to determine if the component should render as anchor */
+    href?: string;
     calciteDropdownItemKeyEvent: EventEmitter;
     calciteDropdownItemMouseover: EventEmitter;
     calciteDropdownItemSelected: EventEmitter;
@@ -35,5 +33,6 @@ export declare class CalciteDropdownItem {
     private selectionMode;
     private determineActiveItem;
     private emitRequestedItem;
+    private getAttributes;
     private getItemPosition;
 }

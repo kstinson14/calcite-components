@@ -88,55 +88,55 @@ a {
   --calcite-button-light: #f3f3f3;
   --calcite-button-light-text: #151515;
   --calcite-button-dark: #353535;
-  --calcite-button-colored-dark-theme-text: #0b0b0b;
+  --calcite-button-dark-text: #0b0b0b;
 }
 :host > div {
   display: flex;
 }
-:host calcite-dropdown > calcite-button {
+:host > div > calcite-dropdown > calcite-button {
   height: 100%;
 }
 
-:host([color=blue]) .divider-container {
+:host([color=blue]) .button-dropdown__divider-container {
   background-color: var(--calcite-ui-blue);
 }
-:host([color=blue]):host([theme=dark]) .divider {
-  background-color: var(--calcite-button-colored-dark-theme-text);
+:host([color=blue]):host([theme=dark]) .button-dropdown__divider {
+  background-color: var(--calcite-button-dark-text);
 }
 
-:host([color=red]) .divider-container {
+:host([color=red]) .button-dropdown__divider-container {
   background-color: var(--calcite-ui-red);
 }
-:host([color=red]):host([theme=dark]) .divider {
-  background-color: var(--calcite-button-colored-dark-theme-text);
+:host([color=red]):host([theme=dark]) .button-dropdown__divider {
+  background-color: var(--calcite-button-dark-text);
 }
 
-:host([color=light]) .divider-container {
+:host([color=light]) .button-dropdown__divider-container {
   background-color: var(--calcite-button-light);
 }
-:host([color=light]) .divider {
+:host([color=light]) .button-dropdown__divider {
   background-color: var(--calcite-button-light-text);
 }
 
-:host([color=dark]) .divider-container {
+:host([color=dark]) .button-dropdown__divider-container {
   background-color: var(--calcite-button-dark);
 }
 
-:host([disabled]) .divider-container {
+:host([disabled]) .button-dropdown__divider-container {
   opacity: 0.4;
 }
 :host([disabled]) calcite-dropdown > calcite-button {
   pointer-events: none;
 }
 
-.divider-container {
+.button-dropdown__divider-container {
   width: 1px;
   display: flex;
   align-items: center;
   transition: all 0.15s ease-in-out;
 }
 
-.divider {
+.button-dropdown__divider {
   width: 1px;
   height: 66.666%;
   display: inline-block;

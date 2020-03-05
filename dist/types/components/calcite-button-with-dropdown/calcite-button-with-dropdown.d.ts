@@ -1,6 +1,6 @@
 import { EventEmitter } from "../../stencil.core";
 import { Scale } from "../../interfaces/common";
-export declare class CalciteButtonWithOverflow {
+export declare class CalciteButtonWithDropdown {
     el: HTMLElement;
     /** specify the color of the control, defaults to blue */
     color: "blue" | "dark" | "light" | "red";

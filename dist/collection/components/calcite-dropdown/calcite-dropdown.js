@@ -11,7 +11,7 @@ export class CalciteDropdown {
         //--------------------------------------------------------------------------
         this.active = false;
         /** specify the alignment of dropdrown, defaults to left */
-        this.alignment = "left";
+        this.alignment = "start";
         /** specify the theme of the dropdown, defaults to light */
         this.theme = "light";
         /** specify the scale of dropdrown, defaults to m */
@@ -38,9 +38,9 @@ export class CalciteDropdown {
     //--------------------------------------------------------------------------
     connectedCallback() {
         // validate props
-        let alignment = ["left", "right", "center"];
+        let alignment = ["start", "center", "end"];
         if (!alignment.includes(this.alignment))
-            this.alignment = "left";
+            this.alignment = "start";
         let theme = ["light", "dark"];
         if (!theme.includes(this.theme))
             this.theme = "light";
@@ -233,8 +233,8 @@ export class CalciteDropdown {
             "type": "string",
             "mutable": true,
             "complexType": {
-                "original": "| \"left\"\n    | \"right\"\n    | \"center\"",
-                "resolved": "\"center\" | \"left\" | \"right\"",
+                "original": "| \"start\"\n    | \"center\"\n    | \"end\"",
+                "resolved": "\"center\" | \"end\" | \"start\"",
                 "references": {}
             },
             "required": false,
@@ -245,7 +245,7 @@ export class CalciteDropdown {
             },
             "attribute": "alignment",
             "reflect": true,
-            "defaultValue": "\"left\""
+            "defaultValue": "\"start\""
         },
         "theme": {
             "type": "string",

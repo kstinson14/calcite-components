@@ -2,7 +2,7 @@ export declare class CalciteDropdown {
     el: HTMLElement;
     active: boolean;
     /** specify the alignment of dropdrown, defaults to left */
-    alignment: "left" | "right" | "center";
+    alignment: "start" | "center" | "end";
     /** specify the theme of the dropdown, defaults to light */
     theme: "light" | "dark";
     /** specify the scale of dropdrown, defaults to m */

@@ -1,6 +1,6 @@
 import { h, Host } from "@stencil/core";
 import { getElementDir } from "../../utils/dom";
-export class CalciteButtonWithOverflow {
+export class CalciteButtonWithDropdown {
     constructor() {
         /** specify the color of the control, defaults to blue */
         this.color = "blue";
@@ -38,9 +38,9 @@ export class CalciteButtonWithOverflow {
         return (h(Host, { dir: dir },
             h("div", null,
                 h("calcite-button", { color: this.color, scale: this.scale, loading: this.loading, icon: this.primaryIcon, iconPosition: dir === "ltr" ? "start" : "end", disabled: this.disabled, theme: this.theme, onClick: this.primaryButtonClickedHandler }, this.primaryText),
-                h("div", { class: "divider-container" },
-                    h("div", { class: "divider" })),
-                h("calcite-dropdown", { alignment: "right", dir: dir, theme: this.theme, scale: this.dropdownScale, width: this.dropdownScale },
+                h("div", { class: "button-dropdown__divider-container" },
+                    h("div", { class: "button-dropdown__divider" })),
+                h("calcite-dropdown", { alignment: "end", dir: dir, theme: this.theme, scale: this.dropdownScale, width: this.dropdownScale },
                     h("calcite-button", { "aria-label": this.dropdownLabel, slot: "dropdown-trigger", scale: this.scale, color: this.color, disabled: this.disabled, theme: this.theme, icon: "caretDown", "use-text-proportions": this.primaryText }),
                     h("slot", null)))));
     }
