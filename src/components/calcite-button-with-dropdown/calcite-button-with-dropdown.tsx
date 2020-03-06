@@ -17,7 +17,7 @@ export class CalciteButtonWithDropdown {
   @Prop({ mutable: true, reflect: true }) theme: "light" | "dark" = "light";
 
   /** specify the scale of the control, defaults to m */
-  @Prop({ mutable: true, reflect: true }) scale: Scale = "m";
+  @Prop({ mutable: true, reflect: true }) scale: "s" | "m" | "l" = "m";
 
   /** text for primary action button  */
   @Prop({ reflect: true }) primaryText: string;
@@ -69,7 +69,7 @@ export class CalciteButtonWithDropdown {
         <div>
           <calcite-button
             color={this.color}
-            scale={this.scale}
+            scale={this.buttonScale}
             loading={this.loading}
             icon={this.primaryIcon}
             iconPosition={dir === "ltr" ? "start" : "end"}
@@ -92,12 +92,11 @@ export class CalciteButtonWithDropdown {
             <calcite-button
               aria-label={this.dropdownLabel}
               slot="dropdown-trigger"
-              scale={this.scale}
+              scale={this.buttonScale}
               color={this.color}
               disabled={this.disabled}
               theme={this.theme}
               icon="caretDown"
-              use-text-proportions={this.primaryText}
             />
             <slot />
           </calcite-dropdown>
@@ -108,13 +107,20 @@ export class CalciteButtonWithDropdown {
 
   private primaryButtonClickedHandler = (e: MouseEvent) => this.primaryButtonClicked.emit(e);
 
+  private get buttonScale() {
+    const scaleLookup: { [id in "s" | "m" | "l"]: Scale } = {
+      s: "xs",
+      m: "s",
+      l: "m",
+    };
+    return scaleLookup[this.scale];
+  }
+
   private get dropdownScale() {
-    const scaleLookup: { [id in Scale]: "s" | "m" | "l" } = {
-      xs: "s",
+    const scaleLookup: { [id in "s" | "m" | "l"]: "s" | "m" | "l" } = {
       s: "s",
-      m: "m",
-      l: "l",
-      xl: "l"
+      m: "s",
+      l: "m",
     };
     return scaleLookup[this.scale];
   }
