@@ -2627,6 +2627,10 @@ class CalciteButton {
         if (this.icon !== null && !iconPosition.includes(this.iconPosition))
             this.iconPosition = "start";
         this.childElType = this.href ? "a" : this.appearance === "inline" ? "span" : "button";
+        this.setupTextContentObserver();
+    }
+    disconnectedCallback() {
+        this.observer.disconnect();
     }
     componentWillLoad() {
     }
@@ -2655,6 +2659,11 @@ class CalciteButton {
     //--------------------------------------------------------------------------
     async setFocus() {
         this.childEl.focus();
+    }
+    updateHasText() {
+        this.hasText = this.el.textContent.length > 0;
+    }
+    setupTextContentObserver() {
     }
     getAttributes() {
         // spread attributes from the component to rendered child, filtering out props
@@ -2695,6 +2704,7 @@ class CalciteButton {
             "icon": [513],
             "iconPosition": [1537, "icon-position"],
             "disabled": [516],
+            "hasText": [32],
             "setFocus": [64]
         },
         "$listeners$": undefined,

@@ -128,10 +128,14 @@ var CalciteButton = /** @class */ (function () {
         if (this.icon !== null && !iconPosition.includes(this.iconPosition))
             this.iconPosition = "start";
         this.childElType = this.href ? "a" : this.appearance === "inline" ? "span" : "button";
+        this.setupTextContentObserver();
+    };
+    class_1.prototype.disconnectedCallback = function () {
+        this.observer.disconnect();
     };
     class_1.prototype.componentWillLoad = function () {
         {
-            this.hasText = this.el.textContent.length > 0;
+            this.updateHasText();
             var elType = this.el.getAttribute("type");
             this.type = this.childElType === "button" && elType ? elType : "submit";
         }
@@ -167,6 +171,16 @@ var CalciteButton = /** @class */ (function () {
                 return [2 /*return*/];
             });
         });
+    };
+    class_1.prototype.updateHasText = function () {
+        this.hasText = this.el.textContent.length > 0;
+    };
+    class_1.prototype.setupTextContentObserver = function () {
+        var _this = this;
+        {
+            this.observer = new MutationObserver(function () { _this.updateHasText(); });
+            this.observer.observe(this.el, { childList: true, subtree: true });
+        }
     };
     class_1.prototype.getAttributes = function () {
         // spread attributes from the component to rendered child, filtering out props

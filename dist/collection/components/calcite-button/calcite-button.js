@@ -95,10 +95,14 @@ export class CalciteButton {
         if (this.icon !== null && !iconPosition.includes(this.iconPosition))
             this.iconPosition = "start";
         this.childElType = this.href ? "a" : this.appearance === "inline" ? "span" : "button";
+        this.setupTextContentObserver();
+    }
+    disconnectedCallback() {
+        this.observer.disconnect();
     }
     componentWillLoad() {
         if (Build.isBrowser) {
-            this.hasText = this.el.textContent.length > 0;
+            this.updateHasText();
             const elType = this.el.getAttribute("type");
             this.type = this.childElType === "button" && elType ? elType : "submit";
         }
@@ -134,6 +138,15 @@ export class CalciteButton {
     //--------------------------------------------------------------------------
     async setFocus() {
         this.childEl.focus();
+    }
+    updateHasText() {
+        this.hasText = this.el.textContent.length > 0;
+    }
+    setupTextContentObserver() {
+        if (Build.isBrowser) {
+            this.observer = new MutationObserver(() => { this.updateHasText(); });
+            this.observer.observe(this.el, { childList: true, subtree: true });
+        }
     }
     getAttributes() {
         // spread attributes from the component to rendered child, filtering out props
@@ -396,6 +409,9 @@ export class CalciteButton {
             "attribute": "disabled",
             "reflect": true
         }
+    }; }
+    static get states() { return {
+        "hasText": {}
     }; }
     static get methods() { return {
         "setFocus": {

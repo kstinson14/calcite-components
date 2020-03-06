@@ -27,9 +27,12 @@ export declare class CalciteButton {
     /** is the button disabled  */
     disabled?: boolean;
     connectedCallback(): void;
+    disconnectedCallback(): void;
     componentWillLoad(): void;
     render(): any;
     setFocus(): Promise<void>;
+    /** watches for changing text content **/
+    private observer;
     /** if button type is present, assign as prop */
     private type?;
     /** the rendered child element */
@@ -37,7 +40,9 @@ export declare class CalciteButton {
     /** the node type of the rendered child element */
     private childElType?;
     /** determine if there is slotted text for styling purposes */
-    private hasText;
+    private hasText?;
+    private updateHasText;
+    private setupTextContentObserver;
     private getAttributes;
     private handleClick;
 }

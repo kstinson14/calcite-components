@@ -92,10 +92,14 @@ const CalciteButton = class {
         if (this.icon !== null && !iconPosition.includes(this.iconPosition))
             this.iconPosition = "start";
         this.childElType = this.href ? "a" : this.appearance === "inline" ? "span" : "button";
+        this.setupTextContentObserver();
+    }
+    disconnectedCallback() {
+        this.observer.disconnect();
     }
     componentWillLoad() {
         {
-            this.hasText = this.el.textContent.length > 0;
+            this.updateHasText();
             const elType = this.el.getAttribute("type");
             this.type = this.childElType === "button" && elType ? elType : "submit";
         }
@@ -125,6 +129,15 @@ const CalciteButton = class {
     //--------------------------------------------------------------------------
     async setFocus() {
         this.childEl.focus();
+    }
+    updateHasText() {
+        this.hasText = this.el.textContent.length > 0;
+    }
+    setupTextContentObserver() {
+        {
+            this.observer = new MutationObserver(() => { this.updateHasText(); });
+            this.observer.observe(this.el, { childList: true, subtree: true });
+        }
     }
     getAttributes() {
         // spread attributes from the component to rendered child, filtering out props
