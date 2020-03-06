@@ -9,11 +9,10 @@
 import { HTMLStencilElement, JSXBase } from './stencil.core';
 import {
   Scale,
+} from './interfaces/Icon';
+import {
   Theme,
 } from './interfaces/common';
-import {
-  Scale as Scale1,
-} from './interfaces/Icon';
 import {
   Placement,
 } from '@popperjs/core';
@@ -185,10 +184,6 @@ export namespace Components {
     */
     'theme': "light" | "dark";
     /**
-    * optionally make button have proportions of a button with text, even if it has no text content
-    */
-    'useTextProportions'?: boolean;
-    /**
     * specify the width of the button, defaults to auto
     */
     'width': "auto" | "half" | "full";
@@ -221,7 +216,7 @@ export namespace Components {
     /**
     * specify the scale of the control, defaults to m
     */
-    'scale': Scale;
+    'scale': "s" | "m" | "l";
     /**
     * select theme (light or dark), defaults to light
     */
@@ -1350,10 +1345,6 @@ declare namespace LocalJSX {
     */
     'theme'?: "light" | "dark";
     /**
-    * optionally make button have proportions of a button with text, even if it has no text content
-    */
-    'useTextProportions'?: boolean;
-    /**
     * specify the width of the button, defaults to auto
     */
     'width'?: "auto" | "half" | "full";
@@ -1390,7 +1381,7 @@ declare namespace LocalJSX {
     /**
     * specify the scale of the control, defaults to m
     */
-    'scale'?: Scale;
+    'scale'?: "s" | "m" | "l";
     /**
     * select theme (light or dark), defaults to light
     */

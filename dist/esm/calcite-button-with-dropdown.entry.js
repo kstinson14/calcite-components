@@ -38,15 +38,21 @@ const CalciteButtonWithDropdown = class {
     }
     render() {
         const dir = getElementDir(this.el);
-        return (h(Host, { dir: dir }, h("div", null, h("calcite-button", { color: this.color, scale: this.scale, loading: this.loading, icon: this.primaryIcon, iconPosition: dir === "ltr" ? "start" : "end", disabled: this.disabled, theme: this.theme, onClick: this.primaryButtonClickedHandler }, this.primaryText), h("div", { class: "button-dropdown__divider-container" }, h("div", { class: "button-dropdown__divider" })), h("calcite-dropdown", { alignment: "end", dir: dir, theme: this.theme, scale: this.dropdownScale, width: this.dropdownScale }, h("calcite-button", { "aria-label": this.dropdownLabel, slot: "dropdown-trigger", scale: this.scale, color: this.color, disabled: this.disabled, theme: this.theme, icon: "caretDown", "use-text-proportions": this.primaryText }), h("slot", null)))));
+        return (h(Host, { dir: dir }, h("div", null, h("calcite-button", { color: this.color, scale: this.buttonScale, loading: this.loading, icon: this.primaryIcon, iconPosition: dir === "ltr" ? "start" : "end", disabled: this.disabled, theme: this.theme, onClick: this.primaryButtonClickedHandler }, this.primaryText), h("div", { class: "button-dropdown__divider-container" }, h("div", { class: "button-dropdown__divider" })), h("calcite-dropdown", { alignment: "end", dir: dir, theme: this.theme, scale: this.dropdownScale, width: this.dropdownScale }, h("calcite-button", { "aria-label": this.dropdownLabel, slot: "dropdown-trigger", scale: this.buttonScale, color: this.color, disabled: this.disabled, theme: this.theme, icon: "caretDown" }), h("slot", null)))));
+    }
+    get buttonScale() {
+        const scaleLookup = {
+            s: "xs",
+            m: "s",
+            l: "m",
+        };
+        return scaleLookup[this.scale];
     }
     get dropdownScale() {
         const scaleLookup = {
-            xs: "s",
             s: "s",
-            m: "m",
-            l: "l",
-            xl: "l"
+            m: "s",
+            l: "m",
         };
         return scaleLookup[this.scale];
     }

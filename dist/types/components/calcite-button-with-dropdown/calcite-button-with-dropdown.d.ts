@@ -1,5 +1,4 @@
 import { EventEmitter } from "../../stencil.core";
-import { Scale } from "../../interfaces/common";
 export declare class CalciteButtonWithDropdown {
     el: HTMLElement;
     /** specify the color of the control, defaults to blue */
@@ -7,7 +6,7 @@ export declare class CalciteButtonWithDropdown {
     /** select theme (light or dark), defaults to light */
     theme: "light" | "dark";
     /** specify the scale of the control, defaults to m */
-    scale: Scale;
+    scale: "s" | "m" | "l";
     /** text for primary action button  */
     primaryText: string;
     /** optionally pass an icon to display on the primary button - accepts Calcite UI icon names  */
@@ -27,5 +26,6 @@ export declare class CalciteButtonWithDropdown {
     connectedCallback(): void;
     render(): any;
     private primaryButtonClickedHandler;
+    private get buttonScale();
     private get dropdownScale();
 }

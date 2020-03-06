@@ -10,8 +10,6 @@ export declare class CalciteButton {
     scale: "xs" | "s" | "m" | "l" | "xl";
     /** specify the width of the button, defaults to auto */
     width: "auto" | "half" | "full";
-    /** optionally make button have proportions of a button with text, even if it has no text content */
-    useTextProportions?: boolean;
     /** optionally add a calcite-loader component to the button, disabling interaction.  */
     loading?: boolean;
     /** optionally add a round style to the button  */
