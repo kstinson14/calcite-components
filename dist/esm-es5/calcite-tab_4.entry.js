@@ -137,7 +137,7 @@ var CalciteTab = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(class_1, "style", {
-        get: function () { return ":host([hidden]){display:none}:host([is-active]) section{display:block}:host{display:none}:host([is-active]){display:block}section{display:none}"; },
+        get: function () { return ":host([hidden]){display:none}:host([is-active]) section{display:block}:host{display:none}:host([is-active]){display:block}section{height:100%;display:none}"; },
         enumerable: true,
         configurable: true
     });
