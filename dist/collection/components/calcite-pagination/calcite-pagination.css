@@ -1,0 +1,66 @@
+:host([hidden]) {
+  display: none;
+}
+
+:host {
+  display: inline-flex;
+  background-color: var(--calcite-ui-foreground);
+  writing-mode: horizontal-tb;
+}
+
+:host(.backgroundColor) {
+  background-color: var(--calcite-ui-background);
+}
+
+.previous, .next, .page {
+  display: flex;
+  align-items: center;
+  border-top: 3px solid transparent;
+  border-bottom: 3px solid transparent;
+  color: var(--calcite-ui-text-3);
+  cursor: pointer;
+}
+.previous:hover, .next:hover, .page:hover {
+  color: var(--calcite-ui-text-1);
+  transition: all 150ms ease-in-out;
+}
+
+.page:hover {
+  border-bottom-color: var(--calcite-ui-border-2);
+}
+.page.is-selected {
+  font-weight: 500;
+  color: var(--calcite-ui-text-1);
+  border-bottom-color: var(--calcite-ui-blue);
+}
+
+.previous, .next {
+  padding: 0.75em 1em;
+}
+.previous:hover, .next:hover {
+  color: var(--calcite-ui-blue);
+  background-color: var(--calcite-ui-foreground-hover);
+}
+.previous:active, .next:active {
+  background-color: var(--calcite-ui-foreground-press);
+}
+.previous.is-disabled, .next.is-disabled {
+  background-color: transparent;
+}
+.previous.is-disabled > svg, .next.is-disabled > svg {
+  opacity: 0.3;
+}
+
+.next {
+  margin-right: 0;
+}
+
+.page, .ellipsis {
+  padding: 0.75em 1em;
+}
+
+.ellipsis {
+  display: flex;
+  align-items: flex-end;
+  color: var(--calcite-ui-text-3);
+}

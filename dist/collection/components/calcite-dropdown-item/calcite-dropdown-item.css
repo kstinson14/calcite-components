@@ -1,0 +1,152 @@
+@charset "UTF-8";
+:host([hidden]) {
+  display: none;
+}
+
+:host {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--calcite-ui-text-3);
+  transition: 150ms ease-in-out;
+  padding: var(--calcite-dropdown-item-padding);
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  position: relative;
+}
+:host:before {
+  content: "•";
+  position: absolute;
+  left: 1rem;
+  opacity: 0;
+  color: #808080;
+  transition: 150ms ease-in-out;
+}
+
+:host([islink]) {
+  padding: 0;
+}
+:host([islink]) a {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--calcite-ui-text-3);
+  transition: 150ms ease-in-out;
+  padding: var(--calcite-dropdown-item-padding);
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  position: relative;
+}
+:host([islink]) a:before {
+  content: "•";
+  position: absolute;
+  left: 1rem;
+  opacity: 0;
+  color: #808080;
+  transition: 150ms ease-in-out;
+}
+
+:host(:hover),
+:host(:focus),
+:host(:active) {
+  background-color: var(--calcite-ui-foreground-hover);
+  color: var(--calcite-ui-text-1);
+  text-decoration: none;
+}
+
+:host(:active) {
+  background-color: var(--calcite-ui-foreground-press);
+}
+
+:host(:hover):before,
+:host(:active):before,
+:host(:focus):before {
+  opacity: 1;
+}
+
+:host-context([dir=rtl]):before {
+  left: unset;
+  right: 1rem;
+}
+
+:host([active]:not([selection-mode=none])) {
+  color: var(--calcite-ui-text-1);
+  font-weight: 500;
+}
+:host([active]:not([selection-mode=none])):before {
+  opacity: 1;
+  color: var(--calcite-ui-blue);
+}
+:host([active]:not([selection-mode=none])) calcite-icon {
+  color: var(--calcite-ui-blue);
+}
+
+:host([selection-mode=multi]):before,
+:host([selection-mode=none]):before {
+  display: none;
+}
+
+:host([selection-mode=none]:not([islink])),
+:host([selection-mode=none][isLink]) a {
+  padding-left: 1rem;
+}
+
+:host([dir=rtl][selection-mode=none]:not([islink])),
+:host([dir=rtl][selection-mode=none][isLink]) a {
+  padding-right: 1rem;
+}
+
+:host .dropdown-item-check-icon {
+  position: absolute;
+  left: 0.8571428571rem;
+  opacity: 0;
+  transform: scale(0.9);
+  transition: 150ms ease-in-out;
+}
+
+:host-context([dir=rtl]) .dropdown-item-check-icon {
+  left: unset;
+  right: 0.8571428571rem;
+}
+
+:host(:hover) .dropdown-item-check-icon {
+  color: var(--calcite-ui-text-1);
+  opacity: 1;
+}
+
+:host([active]) .dropdown-item-check-icon {
+  color: var(--calcite-ui-blue);
+  opacity: 1;
+}
+
+:host .dropdown-item-icon-start {
+  margin-right: 1rem;
+}
+
+:host .dropdown-item-icon-end {
+  margin-left: auto;
+  padding-left: 1rem;
+}
+
+:host-context([dir=rtl]) calcite-icon {
+  margin-right: 0;
+  margin-left: 1rem;
+}
+
+:host-context([dir=rtl]) .dropdown-item-icon-start {
+  margin-left: 1rem;
+  margin-right: 0;
+}
+
+:host-context([dir=rtl]) .dropdown-item-icon-end {
+  margin-right: auto;
+  padding-right: 1rem;
+  margin-left: 0;
+  padding-left: 0;
+}

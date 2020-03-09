@@ -1,0 +1,58 @@
+:host([hidden]) {
+  display: none;
+}
+
+:host {
+  display: flex;
+  outline: none;
+  color: var(--calcite-ui-text-3);
+  padding: 0.3rem 0.4rem;
+  cursor: pointer;
+  width: calc(100% / 7);
+}
+:host .disabled {
+  pointer-events: none;
+}
+
+:host .day {
+  display: flex;
+  width: 100%;
+  border-radius: 100%;
+  font-size: 14px;
+  justify-content: center;
+  align-items: center;
+  height: 2rem;
+  width: 2rem;
+}
+
+:host(:hover) .day,
+:host(:focus) .day,
+:host(.active) .day {
+  background-color: var(--calcite-ui-foreground-hover);
+  transition: all 150ms ease-in-out;
+  color: var(--calcite-ui-text-1);
+}
+
+:host(.selected-day) .day,
+:host(:focus.active) .day {
+  transition: all 150ms ease-in-out;
+  background-color: var(--calcite-ui-blue);
+  border-radius: 100%;
+  color: var(--calcite-ui-foreground);
+  font-weight: 500;
+}
+
+:host(.disabled) {
+  cursor: default;
+}
+:host(.disabled) .day {
+  color: #bfbfbf;
+  background: none;
+}
+
+:host(:hover) .disabled .day,
+:host(.active) .disabled .day,
+:host(:focus.active) .disabled .day {
+  color: #bfbfbf;
+  background: none;
+}

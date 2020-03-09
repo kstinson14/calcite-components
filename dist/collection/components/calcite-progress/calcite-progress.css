@@ -1,0 +1,66 @@
+:host([hidden]) {
+  display: none;
+}
+
+:host {
+  --calcite-track-color: #eaeaea;
+  position: relative;
+  display: block;
+}
+
+:host-context([theme=dark]) {
+  --calcite-track-color: #353535;
+}
+
+.calcite-progress--track,
+.calcite-progress--bar {
+  content: "";
+  opacity: 1;
+  position: absolute;
+  height: 2px;
+  top: 0;
+  transition: opacity 500ms ease-in-out;
+}
+
+.calcite-progress--track {
+  background: var(--calcite-track-color);
+  z-index: 0;
+  width: 100%;
+}
+
+.calcite-progress--bar {
+  background-color: var(--calcite-ui-blue);
+  z-index: 0;
+}
+
+.--indeterminate {
+  width: 20%;
+  animation: looping-progress-bar-ani 1500ms linear infinite;
+}
+
+.--determinate {
+  width: var(--percentage-value);
+}
+
+.calcite-progress--text {
+  padding: 20px 0 0 0;
+}
+
+@keyframes looping-progress-bar-ani {
+  0% {
+    left: 0%;
+    width: 0%;
+  }
+  20% {
+    left: 0%;
+    width: 20%;
+  }
+  80% {
+    left: 80%;
+    width: 20%;
+  }
+  100% {
+    left: 100%;
+    width: 0%;
+  }
+}

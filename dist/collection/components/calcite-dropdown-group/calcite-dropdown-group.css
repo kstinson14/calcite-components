@@ -1,0 +1,16 @@
+:host([hidden]) {
+  display: none;
+}
+
+:host .dropdown-title {
+  display: block;
+  margin: 0 1rem -1px 1rem;
+  padding: var(--calcite-dropdown-group-padding);
+  border-bottom: 1px solid var(--calcite-ui-border-3);
+  color: var(--calcite-ui-text-2);
+  font-weight: 600;
+  word-wrap: break-word;
+  cursor: default;
+  font-size: 0.875rem;
+  line-height: 1.5;
+}

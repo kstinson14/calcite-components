@@ -1,0 +1,68 @@
+:host([hidden]) {
+  display: none;
+}
+
+.month-year {
+  display: flex;
+}
+
+input {
+  font-family: inherit;
+  text-align: center;
+}
+
+.right-icon,
+.left-icon {
+  fill: var(--calcite-ui-text-3);
+  flex-grow: 1;
+  outline: none;
+  padding: 0;
+  border: none;
+  color: inherit;
+  background-color: var(--calcite-ui-foreground);
+  cursor: pointer;
+  transition: all 0.15s ease-in-out;
+}
+.right-icon:hover, .right-icon:focus,
+.left-icon:hover,
+.left-icon:focus {
+  fill: var(--calcite-ui-text-1);
+  background-color: var(--calcite-ui-foreground-hover);
+}
+.right-icon:active,
+.left-icon:active {
+  background-color: var(--calcite-ui-foreground-pressed);
+}
+
+.month-year-text {
+  padding: 0.5rem;
+  display: inline-flex;
+  flex-grow: 1;
+  width: 50%;
+  justify-content: center;
+}
+
+.month,
+.year {
+  color: var(--calcite-ui-text-1);
+  background: var(--calcite-ui-foreground);
+  font-size: 1rem;
+  line-height: 1.5;
+  font-weight: 500;
+}
+
+.year {
+  border: none;
+  width: 60px;
+  padding: 0;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
