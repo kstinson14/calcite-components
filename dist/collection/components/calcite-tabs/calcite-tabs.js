@@ -36,10 +36,9 @@ export class CalciteTabs {
     //--------------------------------------------------------------------------
     render() {
         return (h(Host, null,
-            h("div", null,
-                h("slot", { name: "tab-nav" }),
-                h("section", null,
-                    h("slot", null)))));
+            h("slot", { name: "tab-nav" }),
+            h("section", null,
+                h("slot", null))));
     }
     //--------------------------------------------------------------------------
     //

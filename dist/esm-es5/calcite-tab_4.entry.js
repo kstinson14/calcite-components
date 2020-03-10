@@ -453,7 +453,7 @@ var CalciteTabs = /** @class */ (function () {
     //
     //--------------------------------------------------------------------------
     class_3.prototype.render = function () {
-        return (h(Host, null, h("div", null, h("slot", { name: "tab-nav" }), h("section", null, h("slot", null)))));
+        return (h(Host, null, h("slot", { name: "tab-nav" }), h("section", null, h("slot", null))));
     };
     //--------------------------------------------------------------------------
     //
@@ -555,7 +555,7 @@ var CalciteTabs = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(class_3, "style", {
-        get: function () { return ":host([hidden]){display:none}:host{display:block;--calcite-tabs-layout:flex-start;--calcite-tabs-tab-basis:auto;--calcite-tabs-tab-text-align:start;--calcite-tabs-tab-margin-start:1.25rem;--calcite-tabs-tab-margin-end:0}:host-context([dir=rtl]){--calcite-tabs-tab-margin-start:0;--calcite-tabs-tab-margin-end:1.25rem}:host([layout=center]){--calcite-tabs-layout:center;--calcite-tabs-tab-basis:200px;--calcite-tabs-tab-text-align:center;--calcite-tabs-tab-margin-start:1.25rem;--calcite-tabs-tab-margin-end:1.25rem}:host>div{height:100%;-ms-flex-direction:column;flex-direction:column}:host>div,section{display:-ms-flexbox;display:flex}section{-ms-flex-positive:1;flex-grow:1;overflow:hidden;border-top:1px solid var(--calcite-ui-border-1)}"; },
+        get: function () { return ":host([hidden]){display:none}:host{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;--calcite-tabs-layout:flex-start;--calcite-tabs-tab-basis:auto;--calcite-tabs-tab-text-align:start;--calcite-tabs-tab-margin-start:1.25rem;--calcite-tabs-tab-margin-end:0}:host-context([dir=rtl]){--calcite-tabs-tab-margin-start:0;--calcite-tabs-tab-margin-end:1.25rem}:host([layout=center]){--calcite-tabs-layout:center;--calcite-tabs-tab-basis:200px;--calcite-tabs-tab-text-align:center;--calcite-tabs-tab-margin-start:1.25rem;--calcite-tabs-tab-margin-end:1.25rem}section{display:-ms-flexbox;display:flex;-ms-flex-positive:1;flex-grow:1;overflow:hidden;border-top:1px solid var(--calcite-ui-border-1)}"; },
         enumerable: true,
         configurable: true
     });

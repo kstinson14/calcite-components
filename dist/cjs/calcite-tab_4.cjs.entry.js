@@ -357,7 +357,7 @@ const CalciteTabs = class {
     //
     //--------------------------------------------------------------------------
     render() {
-        return (core.h(core.Host, null, core.h("div", null, core.h("slot", { name: "tab-nav" }), core.h("section", null, core.h("slot", null)))));
+        return (core.h(core.Host, null, core.h("slot", { name: "tab-nav" }), core.h("section", null, core.h("slot", null))));
     }
     //--------------------------------------------------------------------------
     //
@@ -448,7 +448,7 @@ const CalciteTabs = class {
         this.titles.forEach(el => el.updateAriaInfo(tabIds, titleIds));
     }
     get el() { return core.getElement(this); }
-    static get style() { return ":host([hidden]){display:none}:host{display:block;--calcite-tabs-layout:flex-start;--calcite-tabs-tab-basis:auto;--calcite-tabs-tab-text-align:start;--calcite-tabs-tab-margin-start:1.25rem;--calcite-tabs-tab-margin-end:0}:host-context([dir=rtl]){--calcite-tabs-tab-margin-start:0;--calcite-tabs-tab-margin-end:1.25rem}:host([layout=center]){--calcite-tabs-layout:center;--calcite-tabs-tab-basis:200px;--calcite-tabs-tab-text-align:center;--calcite-tabs-tab-margin-start:1.25rem;--calcite-tabs-tab-margin-end:1.25rem}:host>div{height:100%;-ms-flex-direction:column;flex-direction:column}:host>div,section{display:-ms-flexbox;display:flex}section{-ms-flex-positive:1;flex-grow:1;overflow:hidden;border-top:1px solid var(--calcite-ui-border-1)}"; }
+    static get style() { return ":host([hidden]){display:none}:host{display:-ms-flexbox;display:flex;-ms-flex-direction:column;flex-direction:column;--calcite-tabs-layout:flex-start;--calcite-tabs-tab-basis:auto;--calcite-tabs-tab-text-align:start;--calcite-tabs-tab-margin-start:1.25rem;--calcite-tabs-tab-margin-end:0}:host-context([dir=rtl]){--calcite-tabs-tab-margin-start:0;--calcite-tabs-tab-margin-end:1.25rem}:host([layout=center]){--calcite-tabs-layout:center;--calcite-tabs-tab-basis:200px;--calcite-tabs-tab-text-align:center;--calcite-tabs-tab-margin-start:1.25rem;--calcite-tabs-tab-margin-end:1.25rem}section{display:-ms-flexbox;display:flex;-ms-flex-positive:1;flex-grow:1;overflow:hidden;border-top:1px solid var(--calcite-ui-border-1)}"; }
 };
 
 exports.calcite_tab = CalciteTab;
