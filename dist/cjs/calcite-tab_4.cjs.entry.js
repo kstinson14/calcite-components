@@ -87,7 +87,7 @@ const CalciteTab = class {
         return Promise.resolve();
     }
     get el() { return core.getElement(this); }
-    static get style() { return ":host([hidden]){display:none}:host([is-active]) section{display:block}:host{display:none}:host([is-active]){display:block}section{display:none}"; }
+    static get style() { return ":host([hidden]){display:none}:host([is-active]) section{display:block}:host{display:none}:host([is-active]){display:block}section{height:100%;width:100%;display:none}"; }
 };
 
 const CalciteTabNav = class {
