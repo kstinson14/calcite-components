@@ -35,7 +35,7 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './core-30c05663.js';
-import { g as getElementDir, b as getElementProp } from './dom-0361c8d2.js';
+import { g as getElementDir, a as getElementProp } from './dom-d48df009.js';
 var navigationKeys = {
     up: "ArrowUp",
     down: "ArrowDown",

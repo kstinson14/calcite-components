@@ -35,17 +35,11 @@ var __generator = (this && this.__generator) || function (thisArg, body) {
     }
 };
 import { d as getAssetPath, r as registerInstance, h, H as Host, g as getElement } from './core-30c05663.js';
-import { g as getElementDir } from './dom-0361c8d2.js';
+import { g as getElementDir } from './dom-d48df009.js';
 var CSS = {
     icon: "icon",
     mirrored: "mirrored"
 };
-/**
- * Icon data cache.
- * Exported for testing purposes.
- * @private
- */
-var iconCache = {};
 /**
  * Icon request cache.
  * Exported for testing purposes.
@@ -60,24 +54,24 @@ var scaleToPx = {
 function fetchIcon(_a) {
     var icon = _a.icon, scale = _a.scale, filled = _a.filled;
     return __awaiter(this, void 0, void 0, function () {
-        var size, id, request, module, pathData;
+        var size, id;
         return __generator(this, function (_b) {
-            switch (_b.label) {
-                case 0:
-                    size = scaleToPx[scale];
-                    id = "" + normalizeIconName(icon) + size + (filled ? "F" : "");
-                    if (iconCache[id]) {
-                        return [2 /*return*/, iconCache[id]];
+            size = scaleToPx[scale];
+            id = "" + normalizeIconName(icon) + size + (filled ? "F" : "");
+            return [2 /*return*/, new Promise(function (resolve) {
+                    if (requestCache[id]) {
+                        return resolve(requestCache[id]);
                     }
-                    request = requestCache[id] ||
-                        (requestCache[id] = import(getAssetPath("./assets/" + id + ".js")));
-                    return [4 /*yield*/, request];
-                case 1:
-                    module = _b.sent();
-                    pathData = module[id];
-                    iconCache[id] = pathData;
-                    return [2 /*return*/, pathData];
-            }
+                    fetch(getAssetPath("./assets/" + id + ".json"))
+                        .then(function (resp) { return resp.json(); })
+                        .then(function (path) {
+                        resolve(path);
+                    })
+                        .catch(function (_) {
+                        console.error("\"" + id + "\" is not a valid calcite-ui-icon name");
+                        resolve("");
+                    });
+                })];
         });
     });
 }
@@ -161,6 +155,7 @@ var CalciteIcon = /** @class */ (function () {
         var semantic = !!textLabel;
         return (h(Host, { "aria-label": semantic ? textLabel : null, role: semantic ? "img" : null }, h("svg", { class: (_a = {},
                 _a[CSS.mirrored] = dir === "rtl" && mirrored,
+                _a["svg"] = true,
                 _a), xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", height: size, width: size, viewBox: "0 0 " + size + " " + size }, h("path", { d: pathData }))));
     };
     //--------------------------------------------------------------------------
@@ -227,7 +222,7 @@ var CalciteIcon = /** @class */ (function () {
         configurable: true
     });
     Object.defineProperty(class_1, "style", {
-        get: function () { return ":host([hidden]){display:none}:host{display:-ms-inline-flexbox;display:inline-flex}:host([mirror]){-webkit-transform:scaleX(-1);transform:scaleX(-1)}"; },
+        get: function () { return ":host([hidden]){display:none}:host{display:-ms-inline-flexbox;display:inline-flex}:host([mirror]){-webkit-transform:scaleX(-1);transform:scaleX(-1)}.svg{display:block}"; },
         enumerable: true,
         configurable: true
     });

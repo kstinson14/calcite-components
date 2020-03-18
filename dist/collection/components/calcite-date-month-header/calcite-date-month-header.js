@@ -44,14 +44,12 @@ export class CalciteDateMonthHeader {
         return (h(Host, null,
             h("div", { class: "month-year", "aria-hidden": "true" },
                 h("button", { class: "left-icon", "aria-label": this.prevMonthLabel, onClick: () => this.selectPrevMonth() },
-                    h("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 16 16", height: "16", width: "16" },
-                        h("path", { d: "M11.783 14H9.017l-6-6 6-6h2.766l-6 6z" }))),
+                    h("calcite-icon", { icon: "chevron-left", scale: "s" })),
                 h("div", { class: "month-year-text" },
                     h("span", { class: "month", role: "heading" }, localizedMonth),
                     h("input", { class: "year", type: "number", value: this.year, min: this.min && this.min.getFullYear(), max: this.max && this.max.getFullYear(), onChange: event => this.onYearChange(event) })),
                 h("button", { class: "right-icon", "aria-label": this.nextMonthLabel, onClick: () => this.selectNextMonth() },
-                    h("svg", { xmlns: "http://www.w3.org/2000/svg", viewBox: "0 0 16 16", height: "16", width: "16" },
-                        h("path", { d: "M10.217 8l-6-6h2.766l6 6-6 6H4.217z" }))))));
+                    h("calcite-icon", { icon: "chevron-right", scale: "s" })))));
     }
     selectPrevMonth() {
         if (this.month === 0) {

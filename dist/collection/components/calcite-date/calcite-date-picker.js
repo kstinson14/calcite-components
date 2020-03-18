@@ -86,8 +86,7 @@ export class CalciteDatePicker {
         let selectedDate = this.valueAsDate || new Date();
         return (h(Host, { role: "application", expanded: this.showCalendar },
             !this.noCalendarInput && h("div", { class: `date-input-wrapper ${this.showCalendar ? "expanded" : ""}`, role: "application" },
-                h("svg", { xmlns: "http://www.w3.org/2000/svg", class: "calendar-icon", viewBox: "0 0 16 16", width: "16", height: "16" },
-                    h("path", { d: "M16 16H0V6h16zM3 7H1v2h2zm3 0H4v2h2zm3 0H7v2h2zm3 0h-2v2h2zm3 0h-2v2h2zM3 10H1v2h2zm3 0H4v2h2zm3 0H7v2h2zm3 0h-2v2h2zm3 0h-2v2h2zM3 13H1v2h2zm3 0H4v2h2zm3 0H7v2h2zm3 0h-2v2h2zm3 0h-2v2h2zM5 2V1h6v1zm9-1v1h1v2H1V2h1V1H0v4h16V1zM4 0H3v2h1zm9 0h-1v2h1z" })),
+                h("calcite-icon", { icon: "calendar", class: "calendar-icon", scale: "s" }),
                 h("input", { type: "text", placeholder: this.placeholder, value: this.valueAsDate ? new Intl.DateTimeFormat(this.locale).format(this.valueAsDate) : "", class: "date-input", onFocus: () => this.expandCalendar(), onInput: (e) => this.setDate(e.target) })),
             this.showCalendar && (h("div", { class: "calendar-picker-wrapper" },
                 h("calcite-date-month-header", { month: this.getMonth(), year: this.getYear(), selectedDate: selectedDate, prevMonthLabel: this.prevMonthLabel, nextMonthLabel: this.nextMonthLabel, locale: this.locale, min: this.min ? new Date(this.min) : null, max: this.max ? new Date(this.max) : null, onCalciteMonthChange: e => this.setMonth(e.target), onCalciteYearChange: e => this.setYear(e.target) }),

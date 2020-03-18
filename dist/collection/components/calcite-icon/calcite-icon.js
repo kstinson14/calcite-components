@@ -54,7 +54,8 @@ export class CalciteIcon {
         const semantic = !!textLabel;
         return (h(Host, { "aria-label": semantic ? textLabel : null, role: semantic ? "img" : null },
             h("svg", { class: {
-                    [CSS.mirrored]: dir === "rtl" && mirrored
+                    [CSS.mirrored]: dir === "rtl" && mirrored,
+                    "svg": true
                 }, xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", height: size, width: size, viewBox: `0 0 ${size} ${size}` },
                 h("path", { d: pathData }))));
     }

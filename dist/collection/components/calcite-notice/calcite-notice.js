@@ -64,7 +64,7 @@ export class CalciteNotice {
     }
     render() {
         const closeButton = (h("button", { class: "notice-close", "aria-label": "close", onClick: () => this.close(), ref: el => (this.closeButton = el) },
-            h("calcite-icon", { icon: "x", scale: "s" })));
+            h("calcite-icon", { icon: "x", scale: "m" })));
         return (h(Host, { active: this.active },
             this.icon ? this.setIcon() : null,
             h("div", { class: "notice-content" },
@@ -102,7 +102,7 @@ export class CalciteNotice {
     setIcon() {
         var path = this.iconDefaults[this.color];
         return (h("div", { class: "notice-icon" },
-            h("calcite-icon", { icon: path, filled: true, scale: "s" })));
+            h("calcite-icon", { icon: path, scale: "m" })));
     }
     static get is() { return "calcite-notice"; }
     static get encapsulation() { return "shadow"; }

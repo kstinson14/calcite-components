@@ -2,25 +2,6 @@
 
 Object.defineProperty(exports, '__esModule', { value: true });
 
-function _interopNamespace(e) {
-    if (e && e.__esModule) { return e; } else {
-        var n = {};
-        if (e) {
-            Object.keys(e).forEach(function (k) {
-                var d = Object.getOwnPropertyDescriptor(e, k);
-                Object.defineProperty(n, k, d.get ? d : {
-                    enumerable: true,
-                    get: function () {
-                        return e[k];
-                    }
-                });
-            });
-        }
-        n['default'] = e;
-        return n;
-    }
-}
-
 const core = require('./core-67746296.js');
 const dom = require('./dom-801460f3.js');
 
@@ -29,12 +10,6 @@ const CSS = {
     mirrored: "mirrored"
 };
 
-/**
- * Icon data cache.
- * Exported for testing purposes.
- * @private
- */
-const iconCache = {};
 /**
  * Icon request cache.
  * Exported for testing purposes.
@@ -49,15 +24,20 @@ const scaleToPx = {
 async function fetchIcon({ icon, scale, filled }) {
     const size = scaleToPx[scale];
     const id = `${normalizeIconName(icon)}${size}${filled ? "F" : ""}`;
-    if (iconCache[id]) {
-        return iconCache[id];
-    }
-    const request = requestCache[id] ||
-        (requestCache[id] = new Promise(function (resolve) { resolve(_interopNamespace(require(core.getAssetPath(`./assets/${id}.js`)))); }));
-    const module = await request;
-    const pathData = module[id];
-    iconCache[id] = pathData;
-    return pathData;
+    return new Promise(resolve => {
+        if (requestCache[id]) {
+            return resolve(requestCache[id]);
+        }
+        fetch(core.getAssetPath(`./assets/${id}.json`))
+            .then(resp => resp.json())
+            .then(path => {
+            resolve(path);
+        })
+            .catch(_ => {
+            console.error(`"${id}" is not a valid calcite-ui-icon name`);
+            resolve("");
+        });
+    });
 }
 /**
  * Normalize the icon name to match the path data module exports.
@@ -132,7 +112,8 @@ const CalciteIcon = class {
         const size = scaleToPx[scale];
         const semantic = !!textLabel;
         return (core.h(core.Host, { "aria-label": semantic ? textLabel : null, role: semantic ? "img" : null }, core.h("svg", { class: {
-                [CSS.mirrored]: dir === "rtl" && mirrored
+                [CSS.mirrored]: dir === "rtl" && mirrored,
+                "svg": true
             }, xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", height: size, width: size, viewBox: `0 0 ${size} ${size}` }, core.h("path", { d: pathData }))));
     }
     //--------------------------------------------------------------------------
@@ -172,7 +153,7 @@ const CalciteIcon = class {
         "filled": ["loadIconPathData"],
         "size": ["loadIconPathData"]
     }; }
-    static get style() { return ":host([hidden]){display:none}:host{display:-ms-inline-flexbox;display:inline-flex}:host([mirror]){-webkit-transform:scaleX(-1);transform:scaleX(-1)}"; }
+    static get style() { return ":host([hidden]){display:none}:host{display:-ms-inline-flexbox;display:inline-flex}:host([mirror]){-webkit-transform:scaleX(-1);transform:scaleX(-1)}.svg{display:block}"; }
 };
 
 exports.calcite_icon = CalciteIcon;

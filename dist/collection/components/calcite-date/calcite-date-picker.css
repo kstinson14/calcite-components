@@ -23,7 +23,7 @@
   border-bottom: 1px solid var(--calcite-ui-border-1);
 }
 :host .date-input-wrapper .calendar-icon {
-  fill: var(--calcite-ui-text-3);
+  color: var(--calcite-ui-text-3);
   position: absolute;
   top: 0.8333333333rem;
   left: 1.3043478261rem;

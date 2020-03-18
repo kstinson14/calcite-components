@@ -94,6 +94,7 @@
 
 :host([active]) {
   display: inline-flex;
+  align-items: center;
   opacity: 1;
   max-height: 100%;
   pointer-events: initial;
@@ -158,6 +159,7 @@ div::slotted([slot=notice-message]) {
   padding: var(--calcite-notice-spacing-token-small) var(--calcite-notice-spacing-token-large);
   flex: 0 0 auto;
   transition: all 0.15s ease-in-out;
+  align-self: stretch;
   background-color: transparent;
   -webkit-appearance: none;
   border: none;

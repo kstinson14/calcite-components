@@ -1,6 +1,5 @@
 import { Host, h } from "@stencil/core";
 import { LEFT, RIGHT, UP, DOWN, PAGE_UP, PAGE_DOWN, HOME, END } from "../../utils/keys";
-import { getElementTheme } from "../../utils/dom";
 import { guid } from "../../utils/guid";
 export class CalciteSlider {
     constructor() {
@@ -21,21 +20,13 @@ export class CalciteSlider {
         //  Private State/Props
         //
         //--------------------------------------------------------------------------
-        /**
-         * @internal
-         */
+        /** @internal */
         this.guid = `calcite-slider-${guid()}`;
-        /**
-         * @internal
-         */
+        /** @internal */
         this.isRange = false;
-        /**
-         * @internal
-         */
+        /** @internal */
         this.tickValues = [];
-        /**
-         * @internal
-         */
+        /** @internal */
         this.activeProp = "value";
     }
     //--------------------------------------------------------------------------
@@ -54,28 +45,25 @@ export class CalciteSlider {
     }
     render() {
         const id = this.el.id || this.guid;
-        const theme = getElementTheme(this.el);
         const min = this.minValue || this.min;
         const max = this.maxValue || this.value;
         const maxProp = this.isRange ? "maxValue" : "value";
-        return (h(Host, { theme: theme, id: id, "is-range": this.isRange, style: {
-                "--calcite-slider-range-max": `${100 -
-                    this.getUnitInterval(max) * 100}%`,
-                "--calcite-slider-range-min": `${this.getUnitInterval(min) * 100}%`
-            } },
+        const left = `${this.getUnitInterval(min) * 100}%`;
+        const right = `${100 - this.getUnitInterval(max) * 100}%`;
+        return (h(Host, { id: id, "is-range": this.isRange },
             h("div", { class: "slider__track" },
-                h("div", { class: "slider__track__range" }),
+                h("div", { class: "slider__track__range", style: { left, right } }),
                 h("div", { class: "slider__ticks" }, this.tickValues.map(number => (h("span", { class: {
                         slider__tick: true,
                         "slider__tick--active": number >= min && number <= max
                     }, style: {
-                        "--calcite-slider-tick-offset": `${this.getUnitInterval(number) * 100}%`
+                        left: `${this.getUnitInterval(number) * 100}%`
                     } }, this.labelTicks ? (h("span", { class: {
                         slider__tick__label: true,
                         "slider__tick__label--min": number === this.min,
                         "slider__tick__label--max": number === this.max
                     } }, number)) : ("")))))),
-            this.isRange ? (h("button", { ref: el => (this.minHandle = el), onFocus: () => (this.activeProp = "minValue"), onBlur: () => (this.activeProp = null), onMouseDown: () => this.dragStart("minValue"), onTouchStart: e => this.dragStart("minValue", e), role: "slider", "aria-orientation": "horizontal", "aria-label": this.minLabel, "aria-valuenow": this.minValue, "aria-valuemin": this.min, "aria-valuemax": this.max, disabled: this.disabled, class: {
+            this.isRange ? (h("button", { ref: el => (this.minHandle = el), onFocus: () => (this.activeProp = "minValue"), onBlur: () => (this.activeProp = null), onMouseDown: () => this.dragStart("minValue"), onTouchStart: e => this.dragStart("minValue", e), role: "slider", "aria-orientation": "horizontal", "aria-label": this.minLabel, "aria-valuenow": this.minValue, "aria-valuemin": this.min, "aria-valuemax": this.max, disabled: this.disabled, style: { left }, class: {
                     slider__thumb: true,
                     "slider__thumb--min": true,
                     "slider__thumb--active": this.dragProp === "minValue",
@@ -83,7 +71,7 @@ export class CalciteSlider {
                 } },
                 h("span", { class: "slider__handle" }),
                 this.labelHandles ? (h("span", { class: "slider__handle__label", "aria-hidden": "true" }, this.minValue)) : (""))) : (""),
-            h("button", { ref: el => (this.maxHandle = el), onFocus: () => (this.activeProp = maxProp), onBlur: () => (this.activeProp = null), onMouseDown: () => this.dragStart(maxProp), onTouchStart: e => this.dragStart(maxProp, e), role: "slider", "aria-orientation": "horizontal", "aria-label": this.isRange ? this.maxLabel : this.minLabel, "aria-valuenow": this[maxProp], "aria-valuemin": this.min, "aria-valuemax": this.max, disabled: this.disabled, class: {
+            h("button", { ref: el => (this.maxHandle = el), onFocus: () => (this.activeProp = maxProp), onBlur: () => (this.activeProp = null), onMouseDown: () => this.dragStart(maxProp), onTouchStart: e => this.dragStart(maxProp, e), role: "slider", "aria-orientation": "horizontal", "aria-label": this.isRange ? this.maxLabel : this.minLabel, "aria-valuenow": this[maxProp], "aria-valuemin": this.min, "aria-valuemax": this.max, disabled: this.disabled, style: { right }, class: {
                     slider__thumb: true,
                     "slider__thumb--max": true,
                     "slider__thumb--active": this.dragProp === maxProp,

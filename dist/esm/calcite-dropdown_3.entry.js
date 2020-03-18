@@ -1,7 +1,7 @@
 import { r as registerInstance, h, H as Host, g as getElement, c as createEvent } from './core-30c05663.js';
 import { g as guid } from './guid-cb609d41.js';
 import { c as ESCAPE, E as ENTER, S as SPACE, T as TAB, a as END, H as HOME, U as UP, D as DOWN } from './keys-2ed3d0b9.js';
-import { b as getElementProp } from './dom-0361c8d2.js';
+import { a as getElementProp } from './dom-d48df009.js';
 
 const CalciteDropdown = class {
     constructor(hostRef) {

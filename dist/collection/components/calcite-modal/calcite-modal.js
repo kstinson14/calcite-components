@@ -1,6 +1,5 @@
 import { Host, h } from "@stencil/core";
 import { queryShadowRoot, isHidden, isFocusable } from "@a11y/focus-trap";
-import { getElementTheme } from "../../utils/dom";
 export class CalciteModal {
     constructor() {
         //--------------------------------------------------------------------------
@@ -21,13 +20,12 @@ export class CalciteModal {
     //
     //--------------------------------------------------------------------------
     render() {
-        const theme = getElementTheme(this.el);
-        return (h(Host, { role: "dialog", "aria-modal": "true", class: { "is-active": this.isActive }, theme: theme },
+        return (h(Host, { role: "dialog", "aria-modal": "true", class: { "is-active": this.isActive } },
             h("div", { class: "modal" },
                 h("div", { "data-focus-fence": "true", tabindex: "0", onFocus: this.focusLastElement.bind(this) }),
                 h("div", { class: "modal__header" },
                     h("button", { class: "modal__close", "aria-label": this.closeLabel, ref: el => (this.closeButton = el), onClick: () => this.close() },
-                        h("calcite-icon", { icon: "x", scale: "m" })),
+                        h("calcite-icon", { icon: "x", scale: "l" })),
                     h("header", { class: "modal__title" },
                         h("slot", { name: "header" }))),
                 h("div", { class: {

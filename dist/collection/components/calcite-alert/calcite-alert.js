@@ -97,7 +97,7 @@ export class CalciteAlert {
     }
     render() {
         const closeButton = (h("button", { class: "alert-close", "aria-label": "close", onClick: () => this.close(), ref: el => (this.closeButton = el) },
-            h("calcite-icon", { icon: "x", scale: "s" })));
+            h("calcite-icon", { icon: "x", scale: "m" })));
         const count = (h("div", { class: `${this.alertQueue.length > 1 ? "active " : ""}alert-count` },
             "+",
             this.alertQueue.length > 2 ? this.alertQueue.length - 1 : 1));
@@ -161,7 +161,7 @@ export class CalciteAlert {
     setIcon() {
         var path = this.iconDefaults[this.color];
         return (h("div", { class: "alert-icon" },
-            h("calcite-icon", { icon: path, filled: true, scale: "s" })));
+            h("calcite-icon", { icon: path, scale: "m" })));
     }
     static get is() { return "calcite-alert"; }
     static get encapsulation() { return "shadow"; }

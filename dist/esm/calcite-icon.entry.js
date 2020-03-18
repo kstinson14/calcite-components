@@ -1,17 +1,11 @@
 import { d as getAssetPath, r as registerInstance, h, H as Host, g as getElement } from './core-30c05663.js';
-import { g as getElementDir } from './dom-0361c8d2.js';
+import { g as getElementDir } from './dom-d48df009.js';
 
 const CSS = {
     icon: "icon",
     mirrored: "mirrored"
 };
 
-/**
- * Icon data cache.
- * Exported for testing purposes.
- * @private
- */
-const iconCache = {};
 /**
  * Icon request cache.
  * Exported for testing purposes.
@@ -26,15 +20,20 @@ const scaleToPx = {
 async function fetchIcon({ icon, scale, filled }) {
     const size = scaleToPx[scale];
     const id = `${normalizeIconName(icon)}${size}${filled ? "F" : ""}`;
-    if (iconCache[id]) {
-        return iconCache[id];
-    }
-    const request = requestCache[id] ||
-        (requestCache[id] = import(getAssetPath(`./assets/${id}.js`)));
-    const module = await request;
-    const pathData = module[id];
-    iconCache[id] = pathData;
-    return pathData;
+    return new Promise(resolve => {
+        if (requestCache[id]) {
+            return resolve(requestCache[id]);
+        }
+        fetch(getAssetPath(`./assets/${id}.json`))
+            .then(resp => resp.json())
+            .then(path => {
+            resolve(path);
+        })
+            .catch(_ => {
+            console.error(`"${id}" is not a valid calcite-ui-icon name`);
+            resolve("");
+        });
+    });
 }
 /**
  * Normalize the icon name to match the path data module exports.
@@ -109,7 +108,8 @@ const CalciteIcon = class {
         const size = scaleToPx[scale];
         const semantic = !!textLabel;
         return (h(Host, { "aria-label": semantic ? textLabel : null, role: semantic ? "img" : null }, h("svg", { class: {
-                [CSS.mirrored]: dir === "rtl" && mirrored
+                [CSS.mirrored]: dir === "rtl" && mirrored,
+                "svg": true
             }, xmlns: "http://www.w3.org/2000/svg", fill: "currentColor", height: size, width: size, viewBox: `0 0 ${size} ${size}` }, h("path", { d: pathData }))));
     }
     //--------------------------------------------------------------------------
@@ -149,7 +149,7 @@ const CalciteIcon = class {
         "filled": ["loadIconPathData"],
         "size": ["loadIconPathData"]
     }; }
-    static get style() { return ":host([hidden]){display:none}:host{display:-ms-inline-flexbox;display:inline-flex}:host([mirror]){-webkit-transform:scaleX(-1);transform:scaleX(-1)}"; }
+    static get style() { return ":host([hidden]){display:none}:host{display:-ms-inline-flexbox;display:inline-flex}:host([mirror]){-webkit-transform:scaleX(-1);transform:scaleX(-1)}.svg{display:block}"; }
 };
 
 export { CalciteIcon as calcite_icon };

@@ -44,7 +44,7 @@ var __spreadArrays = (this && this.__spreadArrays) || function () {
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './core-30c05663.js';
 import { g as guid } from './guid-cb609d41.js';
 import { L as LEFT, R as RIGHT, E as ENTER, S as SPACE } from './keys-2ed3d0b9.js';
-import { n as nodeListToArray, c as getSlottedElements, g as getElementDir } from './dom-0361c8d2.js';
+import { n as nodeListToArray, c as getSlottedElements, g as getElementDir } from './dom-d48df009.js';
 var CalciteTab = /** @class */ (function () {
     function class_1(hostRef) {
         registerInstance(this, hostRef);

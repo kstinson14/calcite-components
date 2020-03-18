@@ -3,23 +3,10 @@
 }
 
 :host {
-  --calcite-slider-tick: #959595;
-  --calcite-slider-label: #6a6a6a;
-  --calcite-slider-track: #d4d4d4;
-  --calcite-slider-handle: #ffffff;
-  --calcite-slider-handle-border: #6a6a6a;
   display: block;
   padding: 7px 0;
   margin: 7px 0;
   position: relative;
-}
-
-:host-context([theme=dark]) {
-  --calcite-slider-tick: #6a6a6a;
-  --calcite-slider-label: #9f9f9f;
-  --calcite-slider-track: #4a4a4a;
-  --calcite-slider-handle: #2b2b2b;
-  --calcite-slider-handle-border: #9f9f9f;
 }
 
 :host([disabled]) {
@@ -51,7 +38,6 @@
 
 .slider__thumb {
   position: absolute;
-  right: var(--calcite-slider-range-max);
   height: 28px;
   width: 28px;
   margin: -14px;
@@ -63,11 +49,6 @@
   z-index: 3;
 }
 
-.slider__thumb--min {
-  right: auto;
-  left: var(--calcite-slider-range-min);
-}
-
 .slider__handle {
   position: absolute;
   top: 0;
@@ -77,8 +58,8 @@
   margin: 7px;
   box-sizing: border-box;
   border-radius: 100%;
-  background-color: var(--calcite-slider-handle);
-  border: 2px solid var(--calcite-slider-handle-border);
+  background-color: var(--calcite-ui-foreground);
+  border: 2px solid var(--calcite-ui-text-3);
   transition: border 0.25s ease, background-color 0.25s ease, box-shadow 0.25s ease;
 }
 
@@ -92,7 +73,7 @@
   line-height: 1.5;
   font-weight: 500;
   line-height: 1;
-  color: var(--calcite-slider-label);
+  color: var(--calcite-ui-text-3);
   text-align: center;
 }
 
@@ -126,7 +107,7 @@
   left: 50%;
   width: 2px;
   height: 7px;
-  background-color: var(--calcite-slider-handle-border);
+  background-color: var(--calcite-ui-text-3);
   margin-left: -1px;
   margin-top: 7px;
   z-index: 2;
@@ -155,7 +136,7 @@
   height: 2px;
   border-radius: 0;
   z-index: 2;
-  background-color: var(--calcite-slider-track);
+  background-color: var(--calcite-ui-border-2);
   transition: all 250ms ease-in;
   position: relative;
 }
@@ -163,8 +144,6 @@
 .slider__track__range {
   position: absolute;
   top: 0;
-  right: var(--calcite-slider-range-max);
-  left: var(--calcite-slider-range-min);
   height: 2px;
   background-color: var(--calcite-ui-blue);
 }
@@ -174,12 +153,12 @@
   top: -2px;
   width: 2px;
   height: 4px;
-  left: var(--calcite-slider-tick-offset);
+  left: var(--calcite-ui-border-1-offset);
   margin-left: -3px;
-  border: 1px solid var(--calcite-slider-handle);
+  border: 1px solid var(--calcite-ui-foreground);
   border-right-width: 2px;
   border-left-width: 2px;
-  background-color: var(--calcite-slider-tick);
+  background-color: var(--calcite-ui-border-1);
 }
 
 .slider__tick--active {
@@ -191,7 +170,7 @@
   font-size: 0.8125rem;
   line-height: 1.5;
   font-weight: 500;
-  color: var(--calcite-slider-label);
+  color: var(--calcite-ui-text-3);
   width: 4em;
   margin: 14px -2em;
   text-align: center;

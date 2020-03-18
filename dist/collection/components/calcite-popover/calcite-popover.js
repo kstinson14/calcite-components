@@ -222,7 +222,7 @@ export class CalcitePopover {
     renderCloseButton() {
         const { closeButton, textClose } = this;
         return closeButton ? (h("button", { ref: closeButtonEl => (this.closeButtonEl = closeButtonEl), "aria-label": textClose, title: textClose, class: { [CSS.closeButton]: true }, onClick: this.hide },
-            h("calcite-icon", { icon: "x", scale: "s" }))) : null;
+            h("calcite-icon", { icon: "x", scale: "m" }))) : null;
     }
     render() {
         const { _referenceElement, open, disablePointer } = this;

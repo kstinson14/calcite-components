@@ -1,6 +1,6 @@
 import { r as registerInstance, c as createEvent, h, H as Host, g as getElement } from './core-30c05663.js';
 import { a as END, H as HOME, D as DOWN, U as UP, R as RIGHT, L as LEFT, E as ENTER, S as SPACE } from './keys-2ed3d0b9.js';
-import { a as getElementTheme, n as nodeListToArray, c as getSlottedElements } from './dom-0361c8d2.js';
+import { b as getElementTheme, n as nodeListToArray, c as getSlottedElements } from './dom-d48df009.js';
 var TreeSelectionMode;
 (function (TreeSelectionMode) {
     TreeSelectionMode["Single"] = "single";

@@ -44,37 +44,21 @@ export declare class CalciteSlider {
      * locking up the main thread.
      */
     calciteSliderUpdate: EventEmitter;
-    /**
-     * @internal
-     */
+    /** @internal */
     private guid;
-    /**
-     * @internal
-     */
+    /** @internal */
     private isRange;
-    /**
-     * @internal
-     */
+    /** @internal */
     private dragProp;
-    /**
-     * @internal
-     */
+    /** @internal */
     private minHandle;
-    /**
-     * @internal
-     */
+    /** @internal */
     private maxHandle;
-    /**
-     * @internal
-     */
+    /** @internal */
     private dragListener;
-    /**
-     * @internal
-     */
+    /** @internal */
     private tickValues;
-    /**
-     * @internal
-     */
+    /** @internal */
     private activeProp;
     private generateTickValues;
     private dragStart;

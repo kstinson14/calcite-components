@@ -74,6 +74,7 @@
   display: flex;
   position: fixed;
   justify-content: center;
+  align-items: center;
   pointer-events: none;
   margin: 0 auto;
   width: var(--calcite-alert-width);
@@ -197,6 +198,7 @@ div::slotted([slot=alert-message]) {
   padding: var(--calcite-alert-spacing-token-small) var(--calcite-alert-spacing-token-large);
   flex: 0 0 auto;
   transition: all 0.15s ease-in-out;
+  align-self: stretch;
   background-color: transparent;
   -webkit-appearance: none;
   border: none;
@@ -233,6 +235,7 @@ div::slotted([slot=alert-message]) {
   display: flex;
   align-items: center;
   justify-content: space-around;
+  align-self: stretch;
   overflow: hidden;
   width: 0;
   visibility: hidden;
