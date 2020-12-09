@@ -2,6 +2,7 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property       | Attribute       | Description                                                                                     | Type                | Default       |
@@ -17,19 +18,26 @@
 | `theme`        | `theme`         | specify the theme of scrim, defaults to light                                                   | `"dark" \| "light"` | `undefined`   |
 | `value`        | `value`         | the value of the rating component                                                               | `number`            | `0`           |
 
+
 ## Events
 
 | Event                 | Description | Type               |
 | --------------------- | ----------- | ------------------ |
 | `calciteRatingChange` |             | `CustomEvent<any>` |
 
+
 ## Methods
 
 ### `setFocus() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
+
 
 ## Dependencies
 
@@ -39,7 +47,6 @@ Type: `Promise<void>`
 - [calcite-chip](../calcite-chip)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-rating --> calcite-icon
@@ -48,6 +55,6 @@ graph TD;
   style calcite-rating fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

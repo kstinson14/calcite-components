@@ -60,6 +60,7 @@ There is no need to set a theme or scale on the `<calcite-inline-editable>` comp
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property             | Attribute              | Description                                                                                                                                                            | Type                  | Default                    |
@@ -75,6 +76,7 @@ There is no need to set a theme or scale on the `<calcite-inline-editable>` comp
 | `scale`              | `scale`                | specify the scale of the inline-editable component, defaults to the scale of the wrapped calcite-input or the scale of the closest wrapping component with a set scale | `"l" \| "m" \| "s"`   | `undefined`                |
 | `theme`              | `theme`                | specify the theme of the inline-editable component, defaults to the theme of the wrapped calcite-input or the theme of the closest wrapping component with a set theme | `"dark" \| "light"`   | `undefined`                |
 
+
 ## Events
 
 | Event                                      | Description | Type               |
@@ -83,6 +85,7 @@ There is no need to set a theme or scale on the `<calcite-inline-editable>` comp
 | `calciteInlineEditableEditingCancel`       |             | `CustomEvent<any>` |
 | `calciteInlineEditableEnableEditingChange` |             | `CustomEvent<any>` |
 
+
 ## Dependencies
 
 ### Depends on
@@ -90,7 +93,6 @@ There is no need to set a theme or scale on the `<calcite-inline-editable>` comp
 - [calcite-button](../calcite-button)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-inline-editable --> calcite-button
@@ -99,6 +101,6 @@ graph TD;
   style calcite-inline-editable fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

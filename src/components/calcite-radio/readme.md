@@ -4,6 +4,7 @@ Renders small, medium and large radio circles. This is an internal component use
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property   | Attribute  | Description                      | Type                | Default   |
@@ -16,20 +17,20 @@ Renders small, medium and large radio circles. This is an internal component use
 | `scale`    | `scale`    | The scale (size) of the radio.   | `"l" \| "m" \| "s"` | `"m"`     |
 | `theme`    | `theme`    | The color theme of the radio,    | `"dark" \| "light"` | `"light"` |
 
+
 ## Dependencies
 
 ### Used by
 
-- [calcite-radio-button](../calcite-radio-button)
+ - [calcite-radio-button](../calcite-radio-button)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-radio-button --> calcite-radio
   style calcite-radio fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

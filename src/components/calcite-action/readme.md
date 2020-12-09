@@ -4,6 +4,7 @@ The `calcite-action` component lives in either a `calcite-action-bar` or `calcit
 
 <!-- Auto Generated Below -->
 
+
 ## Usage
 
 ### Basic
@@ -32,6 +33,8 @@ Renders a `calcite-action` that has a clear background.
 <calcite-action appearance="clear" icon="layers"></calcite-action>
 ```
 
+
+
 ## Properties
 
 | Property            | Attribute      | Description                                                                                                                         | Type                              | Default        |
@@ -50,13 +53,19 @@ Renders a `calcite-action` that has a clear background.
 | `textEnabled`       | `text-enabled` | Indicates whether the text is displayed.                                                                                            | `boolean`                         | `false`        |
 | `theme`             | `theme`        | Used to set the component's color scheme.                                                                                           | `"dark" \| "light"`               | `undefined`    |
 
+
 ## Methods
 
 ### `setFocus() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
+
 
 ## Slots
 
@@ -64,16 +73,17 @@ Type: `Promise<void>`
 | ---- | ----------------------------------- |
 |      | A slot for adding a `calcite-icon`. |
 
+
 ## Dependencies
 
 ### Used by
 
-- [calcite-action-bar](../calcite-action-bar)
-- [calcite-action-pad](../calcite-action-pad)
-- [calcite-panel](../calcite-panel)
-- [calcite-pick-list-item](../calcite-pick-list-item)
-- [calcite-tip](../calcite-tip)
-- [calcite-tip-manager](../calcite-tip-manager)
+ - [calcite-action-bar](../calcite-action-bar)
+ - [calcite-action-pad](../calcite-action-pad)
+ - [calcite-panel](../calcite-panel)
+ - [calcite-pick-list-item](../calcite-pick-list-item)
+ - [calcite-tip](../calcite-tip)
+ - [calcite-tip-manager](../calcite-tip-manager)
 
 ### Depends on
 
@@ -81,7 +91,6 @@ Type: `Promise<void>`
 - [calcite-icon](../calcite-icon)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-action --> calcite-loader
@@ -95,6 +104,6 @@ graph TD;
   style calcite-action fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

@@ -4,11 +4,12 @@
 
 <!-- Auto Generated Below -->
 
+
 ## Properties
 
 | Property             | Attribute          | Description                                                                                       | Type                                                        | Default       |
 | -------------------- | ------------------ | ------------------------------------------------------------------------------------------------- | ----------------------------------------------------------- | ------------- |
-| `description`        | `description`      | An optional description for this item. This will appear below the label text.                     | `string`                                                    | `undefined`   |
+| `description`        | `description`      | An optional description for this item.  This will appear below the label text.                    | `string`                                                    | `undefined`   |
 | `disableDeselect`    | `disable-deselect` | When false, the item cannot be deselected by user interaction.                                    | `boolean`                                                   | `false`       |
 | `disabled`           | `disabled`         | When true, the item cannot be clicked and is visually muted.                                      | `boolean`                                                   | `false`       |
 | `icon`               | `icon`             | Determines the icon SVG symbol that will be shown. Options are circle, square, grid or null.      | `ICON_TYPES.circle \| ICON_TYPES.grip \| ICON_TYPES.square` | `null`        |
@@ -19,6 +20,7 @@
 | `selected`           | `selected`         | Set this to true to pre-select an item. Toggles when an item is checked/unchecked.                | `boolean`                                                   | `false`       |
 | `value` _(required)_ | `value`            | A unique value used to identify this item - similar to the value attribute on an <input>.         | `string`                                                    | `undefined`   |
 
+
 ## Events
 
 | Event                   | Description                                          | Type                                                                                                              |
@@ -26,13 +28,18 @@
 | `calciteListItemChange` | Emitted whenever the item is selected or unselected. | `CustomEvent<{ item: HTMLCalcitePickListItemElement; value: string; selected: boolean; shiftPressed: boolean; }>` |
 | `calciteListItemRemove` | Emitted whenever the remove button is pressed.       | `CustomEvent<void>`                                                                                               |
 
+
 ## Methods
 
 ### `setFocus() => Promise<void>`
 
+
+
 #### Returns
 
 Type: `Promise<void>`
+
+
 
 ### `toggleSelected(coerce?: boolean) => Promise<void>`
 
@@ -43,6 +50,9 @@ The first argument allows the value to be coerced, rather than swapping values.
 
 Type: `Promise<void>`
 
+
+
+
 ## Slots
 
 | Slot              | Description                                                         |
@@ -50,11 +60,12 @@ Type: `Promise<void>`
 | `"actions-end"`   | a slot for adding actions or content to the end side of the item.   |
 | `"actions-start"` | a slot for adding actions or content to the start side of the item. |
 
+
 ## Dependencies
 
 ### Used by
 
-- [calcite-value-list-item](../calcite-value-list-item)
+ - [calcite-value-list-item](../calcite-value-list-item)
 
 ### Depends on
 
@@ -62,7 +73,6 @@ Type: `Promise<void>`
 - [calcite-action](../calcite-action)
 
 ### Graph
-
 ```mermaid
 graph TD;
   calcite-pick-list-item --> calcite-icon
@@ -73,6 +83,6 @@ graph TD;
   style calcite-pick-list-item fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
----
+----------------------------------------------
 
-_Built with [StencilJS](https://stenciljs.com/)_
+*Built with [StencilJS](https://stenciljs.com/)*

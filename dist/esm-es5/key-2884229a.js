@@ -1,0 +1,1 @@
+function getKey(r){var e={Up:"ArrowUp",Down:"ArrowDown",Left:"ArrowLeft",Right:"ArrowRight",Spacebar:" ",Esc:"Escape"};return e[r]||r}export{getKey as g};
